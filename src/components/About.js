@@ -5,12 +5,11 @@ export default function About() {
   return `
     <section class="section about-section section-paper" id="sobre">
       <div class="container about-layout">
-        <div class="about-photo reveal">
+        <figure class="about-photo about-photo-themis reveal">
           <div class="about-photo-frame">
-            <img src="${lawyer.photo}" alt="Retrato de ${lawyer.name}" width="640" height="640" loading="lazy" />
+            <img src="/images/themis.webp" alt="Representação artística de Têmis com a balança da justiça e uma espada." width="768" height="1152" loading="lazy" decoding="async" />
           </div>
-          <span class="about-photo-label">Direito Criminal · Execução Penal</span>
-        </div>
+        </figure>
         <div class="about-copy reveal">
           <p class="eyebrow eyebrow-dark">Sobre o advogado</p>
           <h2>Conheça a trajetória de <em>${lawyer.name}.</em></h2>
