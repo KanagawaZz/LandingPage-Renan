@@ -1635,7 +1635,7 @@
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
+  .js-enabled .reveal {
     opacity: 1;
     transform: none;
   }

@@ -8,8 +8,8 @@ export default function Welcome() {
         <div class="welcome-mark reveal" aria-hidden="true"><span>“</span><i></i></div>
         <div class="welcome-copy reveal">
           <p class="eyebrow"><span></span> Para familiares</p>
-          <h2>Uma decisão ou mudança na pena pode deixar a família sem saber <em>o que fazer.</em></h2>
-          <p>Entender em que etapa o processo está ajuda a identificar o que precisa ser conferido e quais dúvidas levar ao advogado. Você pode começar contando o que já sabe.</p>
+          <h2>Uma decisão judicial ou mudança no cumprimento da pena pode gerar dúvidas para <em>toda a família.</em></h2>
+          <p>Conhecer a etapa do processo ajuda a identificar quais informações devem ser conferidas e quais dúvidas podem ser levadas ao advogado. Você pode começar contando o que já sabe.</p>
           <a class="button button-light" href="${createWhatsAppLink()}" target="_blank" rel="noopener noreferrer">Conversar sobre a situação ${Icon('arrow')}</a>
         </div>
         <div class="welcome-aside reveal">

@@ -17,7 +17,7 @@ export default function HowItWorks() {
     <section class="section section-sand" id="atendimento">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow eyebrow-dark">Sem complicação</p>
+          <p class="eyebrow eyebrow-dark">Etapas do atendimento</p>
           <h2>Como funciona o <em>atendimento</em></h2>
           <p class="section-intro">Veja o que acontece depois da primeira mensagem.</p>
         </div>

@@ -3,7 +3,7 @@ const contactChecklist = [
     number: '01',
     icon: 'person',
     title: 'Nome completo',
-    description: 'Da pessoa a que se refere o processo.',
+    description: 'Da pessoa envolvida no processo.',
   },
   {
     number: '02',

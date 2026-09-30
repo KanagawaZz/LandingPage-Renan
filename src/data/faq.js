@@ -17,7 +17,12 @@ const faq = [
   {
     question: 'Quanto tempo leva uma análise ou um pedido?',
     answer:
-      'O prazo depende da vara responsável, dos documentos disponíveis e do momento do processo. O advogado acompanha o andamento e informa as atualizações, mas não pode garantir o tempo de análise da Justiça.',
+      'O tempo varia conforme a etapa do processo, as informações disponíveis e a análise do órgão responsável. Não é possível antecipar prazos ou garantir quando haverá uma decisão. No contato, podem ser esclarecidas as etapas que dependem do advogado e aquelas que dependem da Justiça.',
+  },
+  {
+    question: 'Preciso ter o número do processo para entrar em contato?',
+    answer:
+      'Não. Você pode iniciar a conversa contando o que já sabe. Outras informações ou documentos poderão ser solicitados depois, conforme a necessidade de compreender o caso.',
   },
   {
     question: 'Minha conversa é sigilosa?',

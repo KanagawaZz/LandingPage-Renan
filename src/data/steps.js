@@ -6,13 +6,13 @@ const steps = [
   },
   {
     number: '02',
-    title: 'A situação é compreendida',
-    description: 'As informações iniciais ajudam a entender o contexto e o momento do processo.',
+    title: 'As informações são analisadas',
+    description: 'Os dados iniciais ajudam a situar o caso e identificar quais informações são relevantes.',
   },
   {
     number: '03',
     title: 'Você recebe uma orientação',
-    description: 'Os caminhos previstos em lei são explicados com palavras simples, sem antecipar resultados.',
+    description: 'As possibilidades jurídicas são explicadas com clareza, sem antecipar resultados.',
   },
   {
     number: '04',

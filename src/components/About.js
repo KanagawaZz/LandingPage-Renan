@@ -12,7 +12,7 @@ export default function About() {
         </figure>
         <div class="about-copy reveal">
           <p class="eyebrow eyebrow-dark">Sobre o advogado</p>
-          <h2>Conheça a trajetória de <em>${lawyer.name}.</em></h2>
+          <h2>Conheça o trabalho de <em>${lawyer.name}.</em></h2>
           <p class="about-name">${lawyer.name}<span>${lawyer.profession}</span></p>
           <p class="about-bio">${lawyer.bio}</p>
           ${(lawyer.oab || (lawyer.city && !lawyer.city.startsWith('['))) ? `<p class="pending-detail">${lawyer.oab ? `OAB ${lawyer.oab}` : ''}${lawyer.oab && lawyer.city ? ' · ' : ''}${lawyer.city && !lawyer.city.startsWith('[') ? lawyer.city : ''}</p>` : ''}

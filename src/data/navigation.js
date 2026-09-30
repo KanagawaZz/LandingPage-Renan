@@ -1,4 +1,5 @@
 const navigation = [
+  { label: 'Início', href: '#inicio' },
   { label: 'Atuação', href: '#atuacao' },
   { label: 'Atendimento', href: '#atendimento' },
   { label: 'Antes de chamar', href: '#antes-de-chamar' },

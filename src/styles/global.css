@@ -229,7 +229,7 @@ h3 {
   color: var(--color-primary);
 }
 
-.reveal {
+.js-enabled .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -238,7 +238,7 @@ h3 {
   transition-delay: calc(var(--reveal-order, 0) * 90ms);
 }
 
-.reveal.is-visible {
+.js-enabled .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }

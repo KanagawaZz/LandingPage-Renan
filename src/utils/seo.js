@@ -2,9 +2,10 @@ import lawyer from '../data/lawyer.js';
 import siteConfig from '../data/siteConfig.js';
 
 export function setStructuredData() {
-  const imageUrl = siteConfig.seo.url
-    ? new URL(siteConfig.seo.ogImage, siteConfig.seo.url).href
-    : siteConfig.seo.ogImage;
+  const imageUrl = new URL(
+    siteConfig.seo.ogImage,
+    siteConfig.seo.url || window.location.origin,
+  ).href;
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Attorney',
@@ -24,14 +25,15 @@ export function setStructuredData() {
   document.head.append(script);
 
   if (siteConfig.seo.url) {
-    const canonical = document.createElement('link');
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
     canonical.rel = 'canonical';
     canonical.href = siteConfig.seo.url;
-    document.head.append(canonical);
+    if (!canonical.isConnected) document.head.append(canonical);
 
-    const openGraphUrl = document.createElement('meta');
+    const openGraphUrl =
+      document.querySelector('meta[property="og:url"]') || document.createElement('meta');
     openGraphUrl.setAttribute('property', 'og:url');
     openGraphUrl.content = siteConfig.seo.url;
-    document.head.append(openGraphUrl);
+    if (!openGraphUrl.isConnected) document.head.append(openGraphUrl);
   }
 }

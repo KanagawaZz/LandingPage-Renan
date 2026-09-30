@@ -2,6 +2,8 @@
 
 Landing page em Vite com JavaScript, HTML e CSS. O conteúdo do advogado e as seções ficam separados da apresentação para facilitar futuras atualizações.
 
+Para conhecer a organização do projeto e usá-lo como base para outras landing pages, consulte [ARQUITETURA.md](./ARQUITETURA.md).
+
 ## Executar localmente
 
 Requer Node.js instalado.
@@ -24,7 +26,7 @@ Os arquivos finais são gerados na pasta `dist/`.
 
 Edite `src/data/lawyer.js` para alterar nome, profissão, foco, OAB, cidade, WhatsApp, Instagram, foto e biografia. O número do WhatsApp deve conter somente o código do país, DDD e número. A mensagem inicial neutra está em `src/data/siteConfig.js`; o link é gerado por `src/utils/whatsapp.js`.
 
-Troque a foto WebP em `public/images/renan-botelho.webp` e atualize o caminho `photo` em `src/data/lawyer.js` se o nome do arquivo mudar.
+Troque a foto WebP em `public/images/renan-botelho-profile.webp` e atualize o caminho `photo` em `src/data/lawyer.js` se o nome do arquivo mudar. Atualize também a imagem Open Graph em `src/data/siteConfig.js` e nos metadados iniciais de `index.html`.
 
 ## Atualizar as seções
 
@@ -49,7 +51,7 @@ Informe a URL pública em `siteConfig.seo.url` após publicar; canonical e `og:u
 1. Informe e confirme o número da OAB/UF e as cidades/comarcas atendidas em `src/data/lawyer.js`.
 2. Confirme o WhatsApp em `src/data/lawyer.js`.
 3. Informe o Instagram em `src/data/lawyer.js`.
-4. Substitua os campos entre colchetes da biografia pelos dados confirmados e use um retrato profissional aprovado, se disponível.
+4. Revise a biografia para incluir somente dados profissionais confirmados e use um retrato aprovado, se disponível.
 5. Configure a URL do site em `src/data/siteConfig.js` e confira a imagem Open Graph.
 6. Revise o conteúdo e a publicidade conforme as normas aplicáveis à advocacia.
 

@@ -16,6 +16,7 @@ import WhatsAppButton from './components/WhatsAppButton.js';
 import siteConfig from './data/siteConfig.js';
 import { setStructuredData } from './utils/seo.js';
 
+document.documentElement.classList.add('js-enabled');
 document.title = siteConfig.seo.title;
 document.querySelector('meta[name="description"]').content = siteConfig.seo.description;
 document.querySelector('meta[property="og:title"]').content = siteConfig.seo.title;
@@ -23,6 +24,11 @@ document.querySelector('meta[property="og:description"]').content = siteConfig.s
 document.querySelector('meta[property="og:image"]').content = siteConfig.seo.url
   ? new URL(siteConfig.seo.ogImage, siteConfig.seo.url).href
   : siteConfig.seo.ogImage;
+document.querySelector('meta[name="twitter:title"]').content = siteConfig.seo.title;
+document.querySelector('meta[name="twitter:description"]').content = siteConfig.seo.description;
+document.querySelector('meta[name="twitter:image"]').content = document.querySelector(
+  'meta[property="og:image"]',
+).content;
 
 document.querySelector('#app').innerHTML = `
   ${Header()}

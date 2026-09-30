@@ -20,11 +20,11 @@ export default function BeforeContact() {
         <div class="section-heading reveal">
           <p class="eyebrow eyebrow-dark">Para começar a conversa</p>
           <h2>Antes de <em>chamar</em></h2>
-          <p class="section-intro">Se tiver, deixe estes dados por perto. Eles ajudam a localizar as informações do processo.</p>
+          <p class="section-intro">Se tiver, deixe estes dados por perto. Eles podem ajudar a localizar informações do processo, mas não são necessários para iniciar a conversa.</p>
         </div>
         <div class="practice-grid checklist-grid">${items}</div>
         <div class="checklist-note reveal">
-          <p>Não tem esses dados agora? Você ainda pode chamar e contar o que sabe.</p>
+          <p><strong>Não tem todos os dados do processo? Tudo bem.</strong> Você pode iniciar a conversa contando o que já sabe sobre a situação.</p>
           <a class="button button-primary" href="${createWhatsAppLink()}" target="_blank" rel="noopener noreferrer">
             Conversar no WhatsApp ${Icon('arrow')}
           </a>

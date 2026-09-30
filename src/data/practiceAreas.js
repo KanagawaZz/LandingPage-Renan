@@ -4,7 +4,7 @@ const practiceAreas = [
     icon: 'path',
     title: 'Execução Penal',
     description:
-      'Análise de temas como progressão (mudança para regime menos rigoroso), livramento condicional (cumprimento do restante da pena em liberdade, se atendidos os requisitos legais), remição, saída temporária e prisão domiciliar.',
+      'Atuação em questões relacionadas ao cumprimento da pena, considerando as circunstâncias e os documentos de cada processo.',
   },
   {
     number: '02',
@@ -18,7 +18,7 @@ const practiceAreas = [
     icon: 'document',
     title: 'Crimes Tributários',
     description:
-      'Atuação em investigações e processos envolvendo acusações criminais ligadas a tributos e obrigações fiscais.',
+      'Atuação em investigações e processos criminais relacionados a tributos e obrigações fiscais.',
   },
 ];
 

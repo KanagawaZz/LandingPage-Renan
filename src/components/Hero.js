@@ -16,17 +16,16 @@ export default function Hero() {
           <p class="eyebrow"><span></span> ${lawyer.focus}</p>
           <h1>Um familiar está preso?<br /><em>Vamos entender o caso.</em></h1>
           <p class="hero-description">
-            ${lawyer.name} atua em Direito Criminal, com foco em Execução Penal e crimes tributários.
-            Se você tenta entender uma decisão ou uma mudança no cumprimento da pena de alguém próximo,
-            o primeiro passo é conversar sobre a situação.
+            Uma decisão ou mudança no cumprimento da pena pode gerar dúvidas.
+            A conversa inicial ajuda a apresentar o contexto e identificar quais informações são importantes para avaliar o caso.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="${createWhatsAppLink()}" target="_blank" rel="noopener noreferrer">
-              Tirar minha dúvida ${Icon('arrow')}
+              Conversar sobre a situação ${Icon('arrow')}
             </a>
             <a class="text-link" href="#sobre">Conhecer o advogado <span aria-hidden="true">↓</span></a>
           </div>
-          <p class="hero-note"><span class="note-rule"></span> Você pode conversar mesmo sem ter todos os dados do processo</p>
+          <p class="hero-note"><span class="note-rule"></span> Você pode iniciar a conversa sem ter todos os dados do processo</p>
           ${details.length ? `<div class="lawyer-details">${details.map((detail) => `<span>${detail}</span>`).join('')}</div>` : ''}
         </div>
         <div class="hero-portrait reveal">
