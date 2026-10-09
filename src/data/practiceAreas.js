@@ -1,0 +1,88 @@
+const practiceAreas = [
+  {
+    id: 'execucao-penal',
+    number: '01',
+    icon: 'path',
+    tag: 'Área principal',
+    title: 'Execução Penal',
+    featured: true,
+    gridClass: 'bento-highlight-primary',
+    description:
+      'Acompanhamento do cumprimento de pena: pedidos de progressão de regime, livramento condicional, indulto, comutação, remição por trabalho ou estudo e análise de guia de recolhimento.',
+    badge: 'Benefícios e cálculo de pena',
+    btnLabel: 'Falar sobre execução penal',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e gostaria de conversar sobre um caso de execução penal.',
+  },
+  {
+    id: 'flagrante-custodia',
+    number: '02',
+    icon: 'lock',
+    tag: 'Atendimento em plantão',
+    title: 'Prisão em Flagrante e Audiência de Custódia',
+    featured: true,
+    gridClass: 'bento-highlight-urgent',
+    description:
+      'Orientação e atendimento em regime de plantão para medidas urgentes decorrentes de prisão em flagrante e audiência de custódia.',
+    badge: 'Regime de plantão',
+    btnLabel: 'Falar sobre flagrante',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e preciso de orientação sobre uma prisão em flagrante / audiência de custódia.',
+  },
+  {
+    id: 'inquerito-processo',
+    number: '03',
+    icon: 'dialog',
+    tag: 'Investigação e processo',
+    title: 'Inquérito Policial e Processo Criminal',
+    featured: false,
+    gridClass: 'bento-standard',
+    description:
+      'Acompanhamento em oitivas policiais, resposta à acusação, audiências de instrução e defesa técnica perante o Poder Judiciário.',
+    badge: 'Esfera judicial e policial',
+    btnLabel: 'Falar sobre inquérito ou processo',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e gostaria de conversar sobre um inquérito/processo criminal.',
+  },
+  {
+    id: 'habeas-corpus',
+    number: '04',
+    icon: 'shield',
+    tag: 'Proteção de direitos fundamentais',
+    title: 'Habeas Corpus',
+    featured: false,
+    gridClass: 'bento-standard',
+    description:
+      'Medida jurídica cabível contra ilegalidades, constrangimento ilegal ou excesso de prazo, perante Tribunais de Justiça, TRFs, STJ e STF.',
+    badge: 'Tribunais e Cortes Superiores',
+    btnLabel: 'Falar sobre habeas corpus',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e gostaria de uma orientação sobre habeas corpus.',
+  },
+  {
+    id: 'crimes-tributarios',
+    number: '05',
+    icon: 'document',
+    tag: 'Direito Penal Tributário',
+    title: 'Crimes Tributários',
+    featured: false,
+    gridClass: 'bento-standard',
+    description:
+      'Atuação e orientação técnica em investigações e processos envolvendo acusações de crimes contra a ordem tributária e obrigações fiscais.',
+    badge: 'Consultoria e defesa',
+    btnLabel: 'Falar sobre crimes tributários',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e gostaria de conversar sobre um caso de crime tributário.',
+  },
+  {
+    id: 'recursos',
+    number: '06',
+    icon: 'scale',
+    tag: 'Todas as instâncias',
+    title: 'Recursos e Revisão Criminal',
+    featured: false,
+    gridClass: 'bento-highlight-wide',
+    description:
+      'Interposição de Apelação, Recurso em Sentido Estrito, Agravo em Execução, recursos a Tribunais Superiores e ajuizamento de Revisão Criminal.',
+    badge: 'Esferas recursais',
+    btnLabel: 'Falar sobre recursos',
+    whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e gostaria de conversar sobre um recurso / revisão criminal.',
+  },
+];
+
+export default practiceAreas;
