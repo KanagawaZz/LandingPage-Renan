@@ -2172,18 +2172,6 @@ ul {
 /* ==========================================================================
    SCROLL REVEAL & STAGGER ANIMATIONS (ULTRA-FLUID 60/120 FPS)
    ========================================================================== */
-.js .reveal {
-  opacity: 0;
-  transform: translateY(20px) translateZ(0);
-  transition: opacity 0.55s var(--ease-framer), transform 0.55s var(--ease-framer);
-  transition-delay: calc(var(--stagger, 0) * 50ms);
-  will-change: opacity, transform;
-}
-
-.js .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0) translateZ(0);
-}
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -2721,4 +2709,91 @@ ul {
 
 .footer-legal-links a:hover {
   color: var(--color-accent-light);
+}
+
+/* ==========================================================================
+   FILME DE ABERTURA DO HERO (controlado por src/utils/heroFilm.js)
+   ========================================================================== */
+.hero-section.has-film {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-section.has-film::before,
+.hero-section.has-film::after {
+  display: none;
+}
+
+/* Último quadro do filme como imagem: aparece sem JS, em visitas repetidas ou se o vídeo falhar */
+.hero-film {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--color-bg-deep) url('/images/hero-film-end.webp') center / cover no-repeat;
+}
+
+.hero-film-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hero-section.film-playing .hero-film-video {
+  opacity: 1;
+}
+
+/* Véu verde que garante a leitura: mais denso à esquerda (texto) e no topo (menu) */
+.hero-film-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--ink-rgb), 0.9) 0%, rgba(var(--ink-rgb), 0.74) 40%, rgba(var(--ink-rgb), 0.38) 70%, rgba(var(--ink-rgb), 0.55) 100%),
+    linear-gradient(to bottom, rgba(var(--ink-rgb), 0.65) 0%, transparent 20%, transparent 78%, rgba(var(--ink-rgb), 0.75) 100%);
+  transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Durante a abertura: filme quase sem véu, sem conteúdo, sem menu e sem botão flutuante */
+.hero-film-intro .hero-film {
+  background-image: none;
+}
+
+.hero-film-intro .hero-film-veil {
+  opacity: 0.15;
+}
+
+.site-header,
+.whatsapp-float-container,
+.scroll-progress {
+  transition-property: background-color, backdrop-filter, border-color, padding, box-shadow, opacity;
+  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.2s, 1.2s;
+}
+
+.hero-film-intro .site-header,
+.hero-film-intro .whatsapp-float-container,
+.hero-film-intro .scroll-progress {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-film-video {
+    display: none;
+  }
+}
+
+/* Rolagem travada no topo durante a abertura do filme e a entrada do conteúdo */
+html.hero-film-lock,
+html.hero-film-lock body {
+  overflow: hidden;
+  overscroll-behavior: none;
 }

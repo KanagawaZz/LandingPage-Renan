@@ -4,29 +4,43 @@ import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 export default function Hero() {
   return `
-    <section class="hero-section" id="hero" aria-labelledby="hero-title">
-      <div class="hero-ambient-glow" aria-hidden="true"></div>
+    <section class="hero-section has-film" id="hero" aria-labelledby="hero-title">
+      <!-- Filme de abertura: o src é definido em src/utils/heroFilm.js (versão de computador ou de celular).
+           Sem JavaScript, ou depois da primeira visita, fica o último quadro como imagem de fundo. -->
+      <div class="hero-film" aria-hidden="true">
+        <video
+          class="hero-film-video"
+          id="heroFilm"
+          muted
+          playsinline
+          preload="none"
+          disablepictureinpicture
+          data-src-desktop="/videos/hero-film.mp4"
+          data-src-mobile="/videos/hero-film-mobile.mp4"
+        ></video>
+        <div class="hero-film-veil"></div>
+      </div>
 
       <div class="container hero-container">
         <div class="hero-content">
-          <div class="hero-badge reveal" style="--stagger: 0">
+          <div class="hero-badge reveal" data-reveal="from-left" style="--stagger: 0">
             <span class="status-dot" aria-hidden="true"></span>
             <span class="badge-text">Atendimento online em todo o Brasil</span>
           </div>
 
-          <p class="hero-meta reveal" style="--stagger: 1">
+          <p class="hero-meta reveal" data-reveal="from-left" style="--stagger: 1">
             ${lawyer.profession}
           </p>
 
-          <h1 id="hero-title" class="hero-title reveal" style="--stagger: 2">
+          <h1 id="hero-title" class="hero-title reveal" data-reveal="from-left" style="--stagger: 2">
             Defesa criminal com <span class="text-accent">orientação clara</span> em cada etapa.
           </h1>
 
-          <p class="hero-description reveal" style="--stagger: 3">
+          <p class="hero-description reveal" data-reveal="from-left" style="--stagger: 3">
             Atuação em execução penal, investigações e processos criminais, com acompanhamento técnico e atendimento a pessoas presas e seus familiares.
           </p>
 
-          <div class="hero-actions reveal" style="--stagger: 4">
+          <div class="hero-actions reveal" data-reveal="from-left" style="--stagger: 4">
             <a
               href="${createWhatsAppLink('default')}"
               class="button button-primary button-lg"
@@ -46,7 +60,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div class="hero-media reveal" style="--stagger: 3">
+        <div class="hero-media reveal" data-reveal="from-right" style="--stagger: 2">
           <div class="hero-portrait">
             <div class="portrait-wireframe" aria-hidden="true"></div>
 

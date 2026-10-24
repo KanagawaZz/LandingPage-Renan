@@ -5,7 +5,7 @@ export default function About() {
   return `
     <section class="about-section" id="sobre" aria-labelledby="about-title">
       <div class="container">
-        <div class="about-avatar reveal desktop-only">
+        <div class="about-avatar reveal desktop-only" data-reveal="zoom">
           <div class="about-avatar-ring">
             <picture>
               <source srcset="${lawyer.photoHeroWebp}" type="image/webp" />
@@ -22,7 +22,7 @@ export default function About() {
         </div>
 
         <div class="about-row">
-          <div class="about-content reveal">
+          <div class="about-content reveal" data-reveal="from-left">
             <span class="section-badge">Sobre mim</span>
             <h2 id="about-title" class="section-title">Quem conduz o seu caso</h2>
 
@@ -37,7 +37,7 @@ export default function About() {
             </div>
           </div>
 
-          <div class="about-credentials reveal" style="--stagger: 2">
+          <div class="about-credentials reveal" data-reveal="from-right" style="--stagger: 1">
               <div class="credential-item">
                 <span class="credential-icon">${Icon('shield-check')}</span>
                 <div>

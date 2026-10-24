@@ -2,7 +2,7 @@ export default function ThemisBand() {
   return `
     <section class="themis-band" aria-labelledby="themis-title">
       <div class="container themis-grid">
-        <div class="themis-text reveal">
+        <div class="themis-text reveal" data-reveal="from-left">
           <span class="themis-rule" aria-hidden="true"></span>
           <h2 id="themis-title" class="themis-quote">
             Cada fase do processo tem seus prazos e seus caminhos.
@@ -10,7 +10,7 @@ export default function ThemisBand() {
           <p class="themis-caption">Entender em que ponto o caso está é o primeiro passo da defesa.</p>
         </div>
 
-        <figure class="themis-figure reveal" style="--stagger: 2">
+        <figure class="themis-figure reveal" data-reveal="from-right" style="--stagger: 1">
           <div class="themis-frame">
             <img
               src="/images/themis.webp"

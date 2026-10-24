@@ -4,7 +4,7 @@ export default function UrgencyBanner() {
   return `
     <section class="urgency-section desktop-only" id="urgencia" aria-labelledby="urgency-title">
       <div class="container">
-        <div class="urgency-card reveal">
+        <div class="urgency-card reveal" data-reveal="zoom">
           <div class="urgency-ambient" aria-hidden="true"></div>
           
           <div class="urgency-header">

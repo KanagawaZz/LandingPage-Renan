@@ -858,3 +858,15 @@ html, body {
     gap: 1.75rem;
   }
 }
+
+/* Filme no celular: versão vertical e véu mais denso embaixo, onde fica o texto */
+@media (max-width: 768px) {
+  .hero-film {
+    background-image: url('/images/hero-film-end-mobile.webp');
+  }
+
+  .hero-film-veil {
+    background:
+      linear-gradient(to bottom, rgba(var(--ink-rgb), 0.6) 0%, rgba(var(--ink-rgb), 0.35) 22%, rgba(var(--ink-rgb), 0.82) 48%, rgba(var(--ink-rgb), 0.93) 100%);
+  }
+}

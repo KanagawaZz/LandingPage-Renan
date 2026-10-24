@@ -1,0 +1,136 @@
+/* ==========================================================================
+   ENTRADA DOS ELEMENTOS AO ROLAR A PÁGINA
+   - O conteúdo só é ocultado quando há JS (classe .js no <html>)
+   - Mão dupla: ao sair da tela o elemento "se desarma" e anima de novo ao voltar
+   - Colunas de texto vêm da esquerda e imagens/cards laterais da direita
+   - Cards em grid: coluna da esquerda pela esquerda, centro de baixo, direita pela direita
+   - Celular: deslocamentos e desfoque menores
+   ========================================================================== */
+:root {
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-side: 80px;
+  --reveal-card-side: 60px;
+  --reveal-blur: 6px;
+}
+
+/* Base (fade-up): sobe 30px */
+.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition:
+    opacity 0.8s var(--ease-reveal),
+    transform 0.8s var(--ease-reveal),
+    filter 0.8s var(--ease-reveal);
+  transition-delay: calc(var(--stagger, 0) * 110ms);
+}
+
+.js .reveal[data-reveal='from-left'] {
+  transform: translate3d(calc(var(--reveal-side) * -1), 0, 0);
+  filter: blur(var(--reveal-blur));
+  transition-duration: 1s;
+}
+
+.js .reveal[data-reveal='from-right'] {
+  transform: translate3d(var(--reveal-side), 0, 0);
+  filter: blur(var(--reveal-blur));
+  transition-duration: 1s;
+}
+
+.js .reveal[data-reveal='card-left'] {
+  transform: translate3d(calc(var(--reveal-card-side) * -1), 0, 0);
+  filter: blur(4px);
+  transition-duration: 0.85s;
+}
+
+.js .reveal[data-reveal='card-center'] {
+  transform: translate3d(0, 40px, 0);
+  filter: blur(4px);
+  transition-duration: 0.85s;
+}
+
+.js .reveal[data-reveal='card-right'] {
+  transform: translate3d(var(--reveal-card-side), 0, 0);
+  filter: blur(4px);
+  transition-duration: 0.85s;
+}
+
+.js .reveal[data-reveal='zoom'] {
+  transform: scale(0.94);
+  filter: blur(4px);
+  transition-duration: 1s;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Cabeçalhos de seção: selo, título (com desfoque) e subtítulo em sequência */
+.js .section-header.reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.js .section-header.reveal > * {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity 0.8s var(--ease-reveal),
+    transform 0.8s var(--ease-reveal),
+    filter 0.8s var(--ease-reveal);
+}
+
+.js .section-header.reveal > .section-title {
+  transform: translate3d(0, 30px, 0);
+  filter: blur(8px);
+  transition-duration: 0.9s;
+}
+
+.js .section-header.reveal.is-visible > * {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.js .section-header.reveal.is-visible > .section-title {
+  transition-delay: 0.15s;
+}
+
+.js .section-header.reveal.is-visible > :nth-child(n + 3) {
+  transition-delay: 0.28s;
+}
+
+/* Hero: entrada lenta e encadeada quando a abertura do filme termina
+   (o fim desta entrada libera a rolagem: ENTRANCE_DURATION em utils/heroFilm.js) */
+.js .hero-section .reveal {
+  transition-duration: 2s;
+  /* curva suave do início ao fim: o movimento se distribui pela duração inteira */
+  transition-timing-function: cubic-bezier(0.33, 0.05, 0.2, 1);
+  transition-delay: calc(var(--stagger, 0) * 280ms);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --reveal-side: 32px;
+    --reveal-card-side: 32px;
+    --reveal-blur: 4px;
+  }
+
+  /* :not(.is-visible) para não vencer a regra de entrada (o título ficaria preso desfocado) */
+  .js .section-header.reveal:not(.is-visible) > .section-title {
+    filter: blur(4px);
+    transform: translate3d(0, 20px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .section-header.reveal > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}

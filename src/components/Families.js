@@ -35,7 +35,7 @@ export default function Families() {
   return `
     <section class="families-section desktop-only" id="familiares" aria-labelledby="families-title">
       <div class="container families-grid">
-        <div class="families-content reveal">
+        <div class="families-content reveal" data-reveal="from-left">
           <span class="section-badge">Presos e familiares</span>
           <h2 id="families-title" class="section-title">Orientação para quem tem um familiar preso</h2>
           <p class="families-lead">
@@ -50,7 +50,7 @@ export default function Families() {
           </a>
         </div>
 
-        <div class="families-card reveal" style="--stagger: 2">
+        <div class="families-card reveal" data-reveal="from-right" style="--stagger: 1">
           <h3>O que ajuda na primeira conversa</h3>
           <ul class="families-checklist">
             ${checklistHtml}

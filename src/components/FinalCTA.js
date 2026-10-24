@@ -6,7 +6,7 @@ export default function FinalCTA() {
   return `
     <section class="final-cta-section" id="contato" aria-labelledby="cta-title">
       <div class="container">
-        <div class="final-cta-card reveal">
+        <div class="final-cta-card reveal" data-reveal="zoom">
           <div class="cta-backdrop-glow" aria-hidden="true"></div>
           
           <div class="cta-inner">

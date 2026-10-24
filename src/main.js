@@ -1,12 +1,10 @@
-// O HTML da página é gerado no build (src/render.js + vite.config.js).
-// Aqui ficam apenas os estilos e a interatividade.
+// O HTML da página é gerado no build (src/render.js + vite.config.js) e os estilos
+// são carregados no <head> do index.html. Aqui fica apenas a interatividade.
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
-import './styles/variables.css';
-import './styles/global.css';
-import './styles/responsive.css';
 import siteConfig from './data/siteConfig.js';
 import { initConsent } from './utils/consent.js';
+import { initHeroFilm } from './utils/heroFilm.js';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -31,6 +29,12 @@ if (!prefersReducedMotion) {
   }
   requestAnimationFrame(raf);
 }
+
+// 1b. Filme de abertura do hero: trava a rolagem até o conteúdo terminar de entrar
+initHeroFilm({
+  lockScroll: () => lenis?.stop(),
+  unlockScroll: () => lenis?.start(),
+});
 
 // 2. Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
@@ -92,19 +96,24 @@ window.addEventListener(
 updateScrollState();
 
 // 4. Scroll Triggered Reveals (o conteúdo só é ocultado quando há JS: classe .js no <html>)
+// Mão dupla: ao sair da tela o elemento volta ao estado inicial e anima de novo ao retornar,
+// rolando para baixo ou para cima. Exceção: o hero entra uma única vez por carregamento
+// (durante a abertura do filme ele é controlado por heroFilm.js e depois nunca é desarmado).
 const revealElements = document.querySelectorAll('.reveal');
 
 if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
+      const filmIntro = document.documentElement.classList.contains('hero-film-intro');
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+        if (entry.target.closest('#hero')) {
+          if (!filmIntro && entry.isIntersecting) entry.target.classList.add('is-visible');
+          return;
         }
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.12, rootMargin: '-20px 0px -20px 0px' }
   );
 
   revealElements.forEach((el) => revealObserver.observe(el));

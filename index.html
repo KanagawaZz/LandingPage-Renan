@@ -6,7 +6,11 @@
     <meta name="theme-color" content="#202a22" />
     <meta name="author" content="Renan Moraes Advocacia Criminal" />
     <meta name="robots" content="index, follow" />
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+      document.documentElement.classList.add('js');
+      // A abertura do hero acontece no topo: não restaurar a rolagem ao recarregar
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    </script>
 
     <!-- Title, description, Open Graph, Twitter e JSON-LD: gerados no build a partir de src/data/siteConfig.js -->
     <!--app-head-->
@@ -20,6 +24,13 @@
       rel="stylesheet"
     />
     <link rel="preload" as="image" href="/images/renan-hero.jpg" fetchpriority="high" />
+
+    <!-- Estilos no <head> (e não importados pelo JS) para já valerem no primeiro quadro,
+         sem o conteúdo aparecer e sumir antes das animações de entrada -->
+    <link rel="stylesheet" href="/src/styles/variables.css" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/responsive.css" />
+    <link rel="stylesheet" href="/src/styles/animations.css" />
   </head>
   <body>
     <div class="scroll-progress" aria-hidden="true"></div>

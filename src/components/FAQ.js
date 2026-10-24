@@ -5,7 +5,7 @@ export default function FAQ() {
   const faqItems = faq
     .map(
       (item, index) => `
-      <details class="faq-item reveal" style="--stagger: ${index + 1}">
+      <details class="faq-item reveal" style="--stagger: ${index % 4}">
         <summary class="faq-summary">
           <span class="faq-question">${item.question}</span>
           <span class="faq-toggle-icon" aria-hidden="true">

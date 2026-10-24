@@ -1,11 +1,13 @@
 import steps from '../data/steps.js';
 import Icon from './Icon.js';
 
+const stepReveal = ['card-left', 'card-center', 'card-center', 'card-right'];
+
 export default function HowItWorks() {
   const stepsHtml = steps
     .map(
       (item, index) => `
-      <div class="timeline-step reveal" style="--stagger: ${index + 1}">
+      <div class="timeline-step reveal" data-reveal="${stepReveal[index] || 'card-center'}" style="--stagger: ${index}">
         <div class="timeline-marker">
           <span class="timeline-number">${item.step}</span>
           <div class="timeline-line" aria-hidden="true"></div>
