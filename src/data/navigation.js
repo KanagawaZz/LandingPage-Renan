@@ -1,10 +1,10 @@
 const navigation = [
-  { label: 'Áreas de Atuação', href: '#areas' },
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'Áreas de Atuação', href: '#areas', mobile: true },
+  { label: 'Sobre', href: '#sobre', mobile: true },
   { label: 'Atendimento', href: '#atendimento' },
-  { label: 'Urgências', href: '#urgencia' },
+  { label: 'Plantão', href: '#urgencia' },
   { label: 'Dúvidas', href: '#faq' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Contato', href: '#contato', mobile: true },
 ];
 
 export default navigation;

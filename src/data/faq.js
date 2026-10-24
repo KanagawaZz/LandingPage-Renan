@@ -1,44 +1,39 @@
 // <!-- REVISAR COM O ADVOGADO -->
 const faq = [
   {
-    question: 'O que é a Execução Penal e como ela funciona?',
+    question: 'O que acontece depois de uma prisão em flagrante?',
     answer:
-      'A execução penal é a fase em que a decisão judicial com a pena imposta é cumprida. Nessa etapa, acompanha-se a correta aplicação da lei em temas como progressão de regime, livramento condicional, remição de pena por trabalho ou estudo e indulto. A atuação depende sempre da análise do caso concreto e do histórico da execução.',
+      'A pessoa é levada à delegacia, onde é lavrado o auto de prisão em flagrante. Em seguida, deve ser apresentada a um juiz na audiência de custódia. Nessa fase, a defesa pode pedir o relaxamento de uma prisão ilegal ou a liberdade provisória, com ou sem medidas cautelares, conforme o caso.',
   },
   {
-    question: 'Quando é possível pedir a progressão de regime prisional?',
+    question: 'Para que serve a audiência de custódia?',
     answer:
-      'A progressão de regime (mudança do regime fechado para o semiaberto, ou deste para o aberto) exige o cumprimento de requisitos legais previstos na Lei de Execução Penal, como percentuais de pena cumprida e atestado de bom comportamento carcerário. A verificação do momento exato depende da análise do caso concreto e da guia de recolhimento.',
+      'É o ato em que a pessoa presa é apresentada ao juiz para que se avalie a legalidade da prisão e a necessidade de mantê-la. O juiz pode relaxar a prisão, conceder liberdade provisória, com ou sem medidas cautelares, ou converter o flagrante em prisão preventiva.',
   },
   {
-    question: 'O que é a audiência de custódia?',
+    question: 'Como funciona o pedido de progressão de regime?',
     answer:
-      'A audiência de custódia é o ato judicial no qual a pessoa detida é apresentada perante o juiz para avaliar a legalidade da prisão e a necessidade ou não da manutenção da custódia, podendo ser requerida a concessão de liberdade provisória com ou sem medidas cautelares.',
+      'A progressão (do regime fechado para o semiaberto, ou deste para o aberto) depende de requisitos previstos na Lei de Execução Penal, como o cumprimento de uma fração da pena e o bom comportamento carcerário. O momento exato depende da análise do cálculo de pena e da guia de recolhimento de cada caso.',
   },
   {
-    question: 'Familiares podem falar com o advogado de quem foi preso?',
+    question: 'O que é a execução penal?',
     answer:
-      'Sim. Familiares podem entrar em contato para entender a situação do processo, tirar dúvidas e solicitar a realização de atendimento jurídico e visita à unidade prisional, conforme a localidade e a necessidade do caso.',
+      'É a fase em que a pena definida pela Justiça é cumprida. Nela são acompanhados temas como progressão de regime, livramento condicional, remição de pena por trabalho ou estudo e indulto, sempre a partir do histórico concreto da execução.',
   },
   {
-    question: 'O que levar ou enviar na primeira conversa?',
+    question: 'É possível conversar com o advogado à distância?',
     answer:
-      'Para facilitar a análise, é recomendável enviar os dados pessoais completos da pessoa envolvida, o número do processo ou do inquérito (se houver), a delegacia ou unidade prisional onde se encontra e cópias de documentos, decisões ou intimações recebidas.',
+      'Sim. O atendimento pode ser feito online, pelo WhatsApp, para pessoas de qualquer estado. O atendimento presencial é combinado conforme a localidade.',
   },
   {
-    question: 'A primeira conversa tem custo?',
+    question: 'Quais informações ajudam na análise inicial de um caso?',
     answer:
-      'Não. O primeiro atendimento para compreender a situação e orientar sobre os caminhos possíveis não tem custo. Os honorários só são combinados após a análise das medidas necessárias.',
+      'Ajudam o nome completo da pessoa envolvida, o número do processo ou do inquérito, a delegacia ou unidade prisional e as decisões ou intimações recebidas.',
   },
   {
-    question: 'Como funciona o pagamento dos honorários?',
+    question: 'Como são definidos os honorários?',
     answer:
-      'Os honorários advocatícios são definidos de forma transparente e combinados diretamente na conversa, com opções via Pix, cartão parcelado e, conforme a situação, bens, sempre formalizados em contrato de prestação de serviços.',
-  },
-  {
-    question: 'Atende fora do estado de Mato Grosso?',
-    answer:
-      'Sim. O atendimento é realizado de forma online em todo o Brasil e presencialmente, inclusive com visitas a unidades prisionais, conforme o caso e a localidade.',
+      'Os honorários são definidos após a análise das medidas necessárias ao caso e sempre formalizados em contrato de prestação de serviços.',
   },
 ];
 

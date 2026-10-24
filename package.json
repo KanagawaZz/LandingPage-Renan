@@ -1,5 +1,5 @@
 {
-  "name": "novavision-landing-page",
+  "name": "renan-moraes-landing-page",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.4.1"
+  },
+  "dependencies": {
+    "lenis": "1.1.18"
   }
 }

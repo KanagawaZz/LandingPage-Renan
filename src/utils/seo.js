@@ -1,20 +1,22 @@
 import lawyer from '../data/lawyer.js';
 import siteConfig from '../data/siteConfig.js';
 
-export function setStructuredData() {
-  const imageUrl = siteConfig.seo.url
-    ? new URL(siteConfig.seo.ogImage, siteConfig.seo.url).href
-    : siteConfig.seo.ogImage;
+const escapeAttr = (value) =>
+  String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-  const structuredData = {
+const absoluteUrl = (path) => (siteConfig.seo.url ? new URL(path, siteConfig.seo.url).href : path);
+
+function structuredData() {
+  return {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     name: `${lawyer.name} - Advocacia Criminal`,
     alternateName: lawyer.name,
     description: siteConfig.seo.description,
+    url: siteConfig.seo.url || undefined,
     telephone: `+${lawyer.whatsappNumber}`,
     email: lawyer.email,
-    image: imageUrl,
+    image: absoluteUrl(siteConfig.seo.ogImage),
     areaServed: {
       '@type': 'Country',
       name: 'Brasil',
@@ -37,25 +39,38 @@ export function setStructuredData() {
       hasCredential: {
         '@type': 'EducationalOccupationalCredential',
         credentialCategory: 'Registro Profissional',
-        name: 'OAB/MT 37.334',
+        name: lawyer.oab,
       },
     },
   };
+}
 
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(structuredData);
-  document.head.append(script);
+// Gera as tags de SEO no build (pré-renderização), a partir de siteConfig.
+export function renderSeoHead() {
+  const { title, description, ogImage, ogImageAlt, url } = siteConfig.seo;
+  const image = absoluteUrl(ogImage);
 
-  if (siteConfig.seo.url) {
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = siteConfig.seo.url;
-    document.head.append(canonical);
+  return `
+    <title>${title}</title>
+    <meta name="description" content="${escapeAttr(description)}" />
+    ${url ? `<link rel="canonical" href="${url}" />` : ''}
 
-    const openGraphUrl = document.createElement('meta');
-    openGraphUrl.setAttribute('property', 'og:url');
-    openGraphUrl.content = siteConfig.seo.url;
-    document.head.append(openGraphUrl);
-  }
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="${escapeAttr(lawyer.name)} Advocacia Criminal" />
+    <meta property="og:title" content="${escapeAttr(title)}" />
+    <meta property="og:description" content="${escapeAttr(description)}" />
+    ${url ? `<meta property="og:url" content="${url}" />` : ''}
+    <meta property="og:image" content="${image}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeAttr(ogImageAlt)}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(title)}" />
+    <meta name="twitter:description" content="${escapeAttr(description)}" />
+    <meta name="twitter:image" content="${image}" />
+
+    <script type="application/ld+json">${JSON.stringify(structuredData())}</script>
+  `;
 }

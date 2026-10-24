@@ -12,16 +12,16 @@ export default function FinalCTA() {
           <div class="cta-inner">
             <span class="section-badge badge-center">Contato</span>
             <h2 id="cta-title" class="cta-title">
-              Precisa de orientação jurídica sobre o seu caso?
+              Entenda os próximos passos da sua situação jurídica
             </h2>
             <p class="cta-description">
-              Se você precisa de orientação sobre inquérito, audiência ou execução de pena, entre em contato.
+              Conte o que aconteceu e combine a primeira conversa.
             </p>
 
             <div class="cta-highlight-pills">
-              <span class="highlight-pill">${Icon('check')} Primeira conversa gratuita</span>
+              <!-- REVISAR COM O ADVOGADO: manter o prazo só se for sustentável no dia a dia -->
               <span class="highlight-pill">${Icon('clock')} Em geral, retorno em até 30 minutos</span>
-              <span class="highlight-pill">${Icon('scale')} Atendimento em todo o Brasil</span>
+              <span class="highlight-pill">${Icon('lock')} Sigilo profissional</span>
             </div>
 
             <div class="cta-main-action">
@@ -36,15 +36,14 @@ export default function FinalCTA() {
                 <span>Falar no WhatsApp</span>
                 ${Icon('arrow-up-right', 'btn-arrow')}
               </a>
+              <p class="cta-urgent-line mobile-only">
+                ${Icon('alert-triangle')}
+                <span><strong>Prisão em flagrante ou custódia?</strong> Informe isso logo na primeira mensagem.</span>
+              </p>
             </div>
 
             <div class="cta-channels-grid">
-              <a
-                href="${createWhatsAppLink('default')}"
-                class="channel-item"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <div class="channel-item channel-static">
                 <div class="channel-icon-box whatsapp-bg">
                   ${Icon('whatsapp')}
                 </div>
@@ -52,7 +51,7 @@ export default function FinalCTA() {
                   <span class="channel-label">WhatsApp</span>
                   <span class="channel-value">${lawyer.whatsappDisplay}</span>
                 </div>
-              </a>
+              </div>
 
               <a
                 href="mailto:${lawyer.email}"

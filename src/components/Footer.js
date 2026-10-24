@@ -1,7 +1,9 @@
 import lawyer from '../data/lawyer.js';
 import navigation from '../data/navigation.js';
 import Icon from './Icon.js';
-import { createWhatsAppLink } from '../utils/whatsapp.js';
+import siteConfig from '../data/siteConfig.js';
+
+const hasAnalytics = ({ analytics }) => Boolean(analytics.googleAnalyticsId || analytics.clarityId);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,22 +29,13 @@ export default function Footer() {
               </div>
               <div class="brand-text">
                 <span class="brand-name">Renan Moraes</span>
-                <span class="brand-title">Advocacia Criminal · ${lawyer.oab}</span>
+                <span class="brand-title">Advocacia Criminal</span>
               </div>
             </a>
             <p class="footer-tagline">
-              Atuação técnica em Execução Penal, audiências de custódia e processos criminais.
+              Advogado criminalista com atendimento online e presencial.
             </p>
             <div class="footer-social-links">
-              <a
-                href="${createWhatsAppLink('default')}"
-                class="social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp de Renan Moraes"
-              >
-                ${Icon('whatsapp')}
-              </a>
               <a
                 href="${lawyer.instagramUrl}"
                 class="social-link"
@@ -55,22 +48,22 @@ export default function Footer() {
               <a
                 href="mailto:${lawyer.email}"
                 class="social-link"
-                aria-label="E-mail renanmoraes.advogado@gmail.com"
+                aria-label="E-mail ${lawyer.email}"
               >
                 ${Icon('mail')}
               </a>
             </div>
           </div>
 
-          <div class="footer-nav-col">
-            <h4 class="footer-heading">Navegação Rápida</h4>
+          <div class="footer-nav-col desktop-only">
+            <h2 class="footer-heading">Navegação Rápida</h2>
             <ul class="footer-nav-list">
               ${navLinks}
             </ul>
           </div>
 
-          <div class="footer-contact-col">
-            <h4 class="footer-heading">Atendimento e Plantão</h4>
+          <div class="footer-contact-col desktop-only">
+            <h2 class="footer-heading">Atendimento e Plantão</h2>
             <ul class="footer-info-list">
               <li>
                 <span class="info-icon">${Icon('map-pin')}</span>
@@ -94,17 +87,17 @@ export default function Footer() {
 
         <div class="footer-legal-bar">
           <div class="footer-ethical-notice">
-            <!-- CONFIRMAR LINK DIRETO DO CNA -->
             <p>
-              <strong>Aviso de Conformidade Ética:</strong> Publicidade de caráter exclusivamente informativo, em estrita conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021 do CFOAB. Renan Moraes, Advogado, ${lawyer.oab} (<a href="${lawyer.oabConsultUrl}" target="_blank" rel="noopener noreferrer" class="footer-oab-link">Consultar no Cadastro Nacional dos Advogados - CNA/OAB</a>).
-            </p>
-            <p class="footer-privacy-text">
-              <strong>Privacidade e Dados (LGPD):</strong> Os contatos e dados compartilhados são estritamente sigilosos, protegidos pelo sigilo profissional da advocacia (Lei nº 8.906/94) e pela LGPD (Lei nº 13.709/18).
+              <strong>Aviso ético:</strong> Conteúdo informativo, elaborado com base no Código de Ética e Disciplina da OAB e no Provimento nº 205/2021 do CFOAB, sem promessa de resultado. Renan Moraes, Advogado, ${lawyer.oab}.
             </p>
           </div>
 
           <div class="footer-copyright-bar">
             <p>© ${currentYear} Renan Moraes Advocacia Criminal · Todos os direitos reservados.</p>
+            <nav class="footer-legal-links" aria-label="Privacidade">
+              <a href="/politica-de-privacidade.html">Política de privacidade</a>
+              ${hasAnalytics(siteConfig) ? '<a href="#" data-cookie-prefs>Preferências de cookies</a>' : ''}
+            </nav>
           </div>
         </div>
       </div>

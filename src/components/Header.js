@@ -1,18 +1,21 @@
 import navigation from '../data/navigation.js';
 import lawyer from '../data/lawyer.js';
 import Icon from './Icon.js';
-import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 export default function Header() {
-  const navLinks = navigation
-    .map(
-      (item) => `
+  const renderLinks = (items) =>
+    items
+      .map(
+        (item) => `
       <li>
         <a href="${item.href}" class="nav-link">${item.label}</a>
       </li>
     `
-    )
-    .join('');
+      )
+      .join('');
+
+  const navLinks = renderLinks(navigation);
+  const mobileNavLinks = renderLinks(navigation.filter((item) => item.mobile));
 
   return `
     <header class="site-header" id="siteHeader">
@@ -34,17 +37,6 @@ export default function Header() {
         </nav>
 
         <div class="header-actions">
-          <a
-            href="${createWhatsAppLink('default')}"
-            class="button button-header"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Falar no WhatsApp com o Dr. Renan"
-          >
-            <span class="btn-pulse" aria-hidden="true"></span>
-            ${Icon('whatsapp', 'btn-icon')}
-            <span>Falar no WhatsApp</span>
-          </a>
 
           <button
             class="menu-toggle"
@@ -59,27 +51,13 @@ export default function Header() {
         </div>
       </div>
 
-      <div class="mobile-nav" id="mobileNav" hidden aria-label="Navegação Mobile">
+      <nav class="mobile-nav" id="mobileNav" hidden aria-label="Navegação Mobile">
         <div class="mobile-nav-inner container">
           <ul class="mobile-nav-list">
-            ${navLinks}
+            ${mobileNavLinks}
           </ul>
-          <div class="mobile-nav-footer">
-            <a
-              href="${createWhatsAppLink('default')}"
-              class="button button-primary button-full"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ${Icon('whatsapp', 'btn-icon')}
-              <span>Falar no WhatsApp</span>
-            </a>
-            <p class="mobile-nav-caption">
-              ${Icon('clock', 'caption-icon')} Atendimento em plantão
-            </p>
-          </div>
         </div>
-      </div>
+      </nav>
     </header>
   `;
 }

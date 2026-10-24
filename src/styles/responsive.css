@@ -662,3 +662,199 @@ html, body {
     font-size: 1.15rem;
   }
 }
+
+/* ==========================================================================
+   MOBILE OBJETIVO: hero → o que resolvo → sobre mim → contato
+   ========================================================================== */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
+  }
+
+  /* Hero: apresentação do advogado primeiro */
+  .hero-section {
+    padding-bottom: 3rem;
+  }
+
+  .hero-container {
+    gap: 1.75rem;
+  }
+
+  .hero-media {
+    order: 0;
+    margin-top: 0;
+  }
+
+  .hero-portrait {
+    width: min(78%, 320px);
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+  }
+
+  .hero-actions {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-trust-pills {
+    flex-direction: row;
+    padding-top: 1.15rem;
+  }
+
+  .trust-pill {
+    width: auto;
+  }
+
+  /* O que eu resolvo: lista compacta */
+  .practice-section .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .bento-grid {
+    gap: 0.75rem;
+  }
+
+  .bento-card {
+    padding: 1.1rem 1.1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.95rem;
+    align-items: center;
+  }
+
+  .bento-card:hover {
+    transform: none;
+  }
+
+  .bento-card-header {
+    margin: 0;
+    grid-row: span 2;
+  }
+
+  .bento-number,
+  .bento-tag,
+  .bento-description,
+  .bento-badge,
+  .card-spotlight {
+    display: none;
+  }
+
+  .bento-icon-wrapper {
+    width: 42px;
+    height: 42px;
+  }
+
+  .bento-card-body {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .bento-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .bento-card-footer {
+    border-top: 0;
+    padding-top: 0;
+    min-width: 0;
+  }
+
+  .bento-link {
+    font-size: 0.825rem;
+    color: var(--color-accent-ink);
+  }
+
+  /* Sobre mim: só texto e credenciais (a foto já está no hero) */
+  .about-grid {
+    margin-bottom: 0;
+  }
+
+  /* Rodapé enxuto */
+  .footer-top-grid {
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-tagline {
+    margin-bottom: 1rem;
+  }
+
+  .gold-divider-star {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Áreas: execução penal em destaque em tablet e celular */
+@media (max-width: 1024px) {
+  .bento-feature,
+  .bento-highlight-wide {
+    grid-column: span 2;
+  }
+
+  .bento-highlight-urgent {
+    grid-column: span 1;
+  }
+
+  .families-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-feature,
+  .bento-highlight-urgent,
+  .bento-highlight-wide {
+    grid-column: span 1;
+  }
+
+  .bento-feature .bento-card-body {
+    display: block;
+  }
+
+  .bento-feature .bento-description {
+    display: block;
+    margin: 0.35rem 0 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .bento-feature .bento-title {
+    font-size: 1.2rem;
+  }
+
+  .bento-highlights {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .themis-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .themis-quote {
+    font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  }
+
+  .themis-caption {
+    font-size: 0.95rem;
+  }
+
+  .themis-figure {
+    padding: 0 0 12px 12px;
+  }
+}
+
+/* Sobre: texto e credenciais empilham em telas estreitas */
+@media (max-width: 900px) {
+  .about-row {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}

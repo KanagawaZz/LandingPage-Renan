@@ -1,46 +1,63 @@
 :root {
-  /* Color Palette - Deep Navy, Graphite, Champagne/Copper Accent */
-  --color-bg-deep: #070d18;
-  --color-bg-main: #0a111e;
-  --color-bg-secondary: #0f1a2d;
-  --color-surface-1: #132138;
-  --color-surface-2: #182a46;
-  --color-surface-card: rgba(19, 33, 56, 0.7);
-  --color-surface-hover: rgba(26, 45, 75, 0.85);
+  /* Color Palette - base: #171C18 · #202A22 · #8E9A83 · #F3EFE4 · #C5A15D */
+  --color-forest-night: #171c18;
+  --color-forest: #202a22;
+  --color-sage: #8e9a83;
+  --color-cream: #f3efe4;
+  --color-gold: #c5a15d;
+
+  --sage-rgb: 142, 154, 131;
+  --ink-rgb: 23, 28, 24;
+  --cream-rgb: 243, 239, 228;
+  --accent-rgb: 197, 161, 93;
+  --urgent-rgb: 180, 85, 63;
+
+  --color-bg-deep: var(--color-forest-night);
+  --color-bg-main: var(--color-forest);
+  --color-bg-secondary: #1c241e;
+  --color-surface-1: #2a362c;
+  --color-surface-2: #344236;
+  --color-surface-card: rgba(42, 54, 44, 0.7);
+  --color-surface-hover: rgba(52, 66, 54, 0.85);
 
   /* Borders & Glassmorphism */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(201, 164, 126, 0.18);
-  --border-card-hover: rgba(201, 164, 126, 0.5);
-  --glass-bg: rgba(10, 17, 30, 0.78);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(var(--cream-rgb), 0.12);
+  --border-card: rgba(var(--accent-rgb), 0.24);
+  --border-card-hover: rgba(var(--accent-rgb), 0.55);
+  --glass-bg: rgba(var(--ink-rgb), 0.86);
+  --glass-border: rgba(var(--cream-rgb), 0.12);
 
-  /* Light / Sand Layer Palette (Editorial Alternation) */
-  --color-sand-bg: #f7f4ee;
-  --color-sand-surface: #ffffff;
-  --color-sand-border: #e2dccf;
-  --color-sand-text: #0f1b2d;
-  --color-sand-muted: #556275;
+  /* Segunda camada verde (alterna com --color-bg-main entre as seções) */
+  --color-sand-bg: #171f19;
+  --color-sand-surface: #243026;
+  --color-sand-border: rgba(var(--sage-rgb), 0.22);
+  --color-sand-text: var(--color-cream);
+  --color-sand-muted: #c8d0bd;
 
-  /* Accents */
-  --color-accent: #c9a47e;
-  --color-accent-light: #dfbe9b;
-  --color-accent-dark: #a9835d;
-  --color-accent-bg: rgba(201, 164, 126, 0.12);
-  --color-accent-glow: rgba(201, 164, 126, 0.3);
+  /* Accents - Gold */
+  --color-accent: var(--color-gold);
+  --color-accent-light: #d9bd85;
+  --color-accent-dark: #7a5f2c;
+  --color-accent-ink: var(--color-accent-light);
+  --color-accent-bg: rgba(var(--accent-rgb), 0.08);
+  --color-accent-glow: rgba(var(--accent-rgb), 0.3);
 
-  /* Status / Urgent */
-  --color-urgent: #e65a4c;
-  --color-urgent-bg: rgba(230, 90, 76, 0.12);
-  --color-urgent-border: rgba(230, 90, 76, 0.3);
+  /* Status / Urgent - Terracota */
+  --color-urgent: #b4553f;
+  --color-urgent-light: #e8a08c;
+  --color-urgent-bg: rgba(var(--urgent-rgb), 0.12);
+  --color-urgent-border: rgba(var(--urgent-rgb), 0.35);
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #20ba59;
 
   /* Typography Colors */
-  --color-text-title: #f4f1ea;
-  --color-text-body: #d1d8e2;
-  --color-text-muted: #8e9cb0;
-  --color-text-dark: #070d18;
+  --color-text-title: var(--color-cream);
+  --color-text-body: #ebe8de;
+  --color-text-muted: #c8d0bd;
+  --color-text-dark: var(--color-forest-night);
+
+  /* Paper texture (ruído sutil, como o papel da referência) */
+  --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* Typography Families */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -58,10 +75,10 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.1);
-  --shadow-card-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.65), 0 0 24px rgba(201, 164, 126, 0.18);
-  --shadow-glow: 0 0 40px rgba(201, 164, 126, 0.2);
+  --shadow-sm: 0 4px 16px rgba(var(--ink-rgb), 0.3);
+  --shadow-card: 0 10px 30px -10px rgba(var(--ink-rgb), 0.5), 0 0 1px rgba(var(--cream-rgb), 0.1);
+  --shadow-card-hover: 0 20px 40px -12px rgba(var(--ink-rgb), 0.6), 0 0 24px rgba(var(--accent-rgb), 0.18);
+  --shadow-glow: 0 0 40px rgba(var(--accent-rgb), 0.2);
 
   /* Transitions */
   --ease-framer: cubic-bezier(0.22, 1, 0.36, 1);

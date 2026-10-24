@@ -1,9 +1,8 @@
 import Icon from './Icon.js';
-import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 export default function UrgencyBanner() {
   return `
-    <section class="urgency-section" id="urgencia" aria-labelledby="urgency-title">
+    <section class="urgency-section desktop-only" id="urgencia" aria-labelledby="urgency-title">
       <div class="container">
         <div class="urgency-card reveal">
           <div class="urgency-ambient" aria-hidden="true"></div>
@@ -39,19 +38,12 @@ export default function UrgencyBanner() {
           </div>
 
           <div class="urgency-actions">
-            <a
-              href="${createWhatsAppLink('urgent')}"
-              class="button button-urgency button-lg"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Acionar plantão de urgência no WhatsApp"
-            >
-              ${Icon('whatsapp', 'btn-icon')}
-              <span>Falar no plantão de urgência</span>
-              ${Icon('arrow-up-right', 'btn-arrow')}
+            <a href="#contato" class="button button-urgency button-lg">
+              <span>Informar uma prisão em flagrante</span>
+              ${Icon('arrow', 'btn-arrow')}
             </a>
             <span class="urgency-disclaimer">
-              ${Icon('clock', 'disclaimer-icon')} Em geral, retorno em até 30 minutos
+              ${Icon('map-pin', 'disclaimer-icon')} Informe a cidade e onde a pessoa está detida
             </span>
           </div>
         </div>

@@ -17,8 +17,7 @@ export default function WhatsAppButton() {
           ${Icon('whatsapp')}
         </div>
         <div class="whatsapp-float-tooltip">
-          <span class="tooltip-title">Plantão Criminal</span>
-          <span class="tooltip-subtitle">Atendimento em plantão</span>
+          <span class="tooltip-title">Falar no WhatsApp</span>
         </div>
       </a>
     </div>
