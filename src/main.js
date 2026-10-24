@@ -30,11 +30,8 @@ if (!prefersReducedMotion) {
   requestAnimationFrame(raf);
 }
 
-// 1b. Filme de abertura do hero: trava a rolagem até o conteúdo terminar de entrar
-initHeroFilm({
-  lockScroll: () => lenis?.stop(),
-  unlockScroll: () => lenis?.start(),
-});
+// 1b. Filme de abertura do hero (a rolagem continua livre durante a abertura)
+initHeroFilm();
 
 // 2. Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');

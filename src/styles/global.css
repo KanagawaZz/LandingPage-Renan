@@ -2791,9 +2791,3 @@ ul {
   }
 }
 
-/* Rolagem travada no topo durante a abertura do filme e a entrada do conteúdo */
-html.hero-film-lock,
-html.hero-film-lock body {
-  overflow: hidden;
-  overscroll-behavior: none;
-}

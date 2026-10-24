@@ -1,17 +1,17 @@
 // Filme de abertura do hero (roda a cada carregamento da página)
-// - O filme roda em tela cheia com o conteúdo oculto e a rolagem travada no topo.
+// - O filme roda em tela cheia com o conteúdo oculto.
 // - Aos REVEAL_AT segundos, ou no primeiro gesto (rolar, deslizar, tocar, teclar), o conteúdo
 //   entra pelas laterais: textos pela esquerda, foto pela direita.
-// - A rolagem só é liberada quando essa entrada termina, para que ela seja vista por inteiro.
+// - A rolagem nunca é bloqueada: se a pessoa rolar, a página desce normalmente e o conteúdo
+//   do hero continua entrando enquanto sobe na tela.
 // - Ao terminar, o filme fica parado no último quadro, como fundo do hero.
 // - Sem vídeo (erro, autoplay bloqueado, rede lenta) ou com "reduzir movimento":
-//   o conteúdo aparece sobre o último quadro (imagem), sem travar a rolagem.
+//   o conteúdo aparece sobre o último quadro (imagem).
 const REVEAL_AT = 3; // segundo do filme em que o conteúdo começa a entrar
 const START_TIMEOUT = 2500; // se o filme não começar até aqui (ms), revela sem ele
-const ENTRANCE_DURATION = 3000; // duração da entrada do conteúdo (ms) antes de liberar a rolagem
-const INTERRUPTIONS = ['wheel', 'touchmove', 'keydown', 'pointerdown'];
+const INTERRUPTIONS = ['wheel', 'touchmove', 'scroll', 'keydown', 'pointerdown'];
 
-export function initHeroFilm({ lockScroll = () => {}, unlockScroll = () => {} } = {}) {
+export function initHeroFilm() {
   const hero = document.querySelector('#hero');
   const video = document.querySelector('#heroFilm');
   // O index.html já liga a abertura no primeiro quadro; daqui em diante este módulo a controla
@@ -37,11 +37,6 @@ export function initHeroFilm({ lockScroll = () => {}, unlockScroll = () => {} } 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
-  function unlock() {
-    root.classList.remove('hero-film-lock');
-    unlockScroll();
-  }
-
   function reveal() {
     if (revealed) return;
     revealed = true;
@@ -53,7 +48,6 @@ export function initHeroFilm({ lockScroll = () => {}, unlockScroll = () => {} } 
     requestAnimationFrame(() =>
       requestAnimationFrame(() => heroItems.forEach((el) => el.classList.add('is-visible')))
     );
-    setTimeout(unlock, ENTRANCE_DURATION);
   }
 
   function dropVideo() {
@@ -63,9 +57,8 @@ export function initHeroFilm({ lockScroll = () => {}, unlockScroll = () => {} } 
     reveal();
   }
 
-  root.classList.add('hero-film-intro', 'hero-film-lock');
+  root.classList.add('hero-film-intro');
   hero.classList.add('film-playing');
-  lockScroll();
 
   video.src = isMobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
   video.addEventListener('timeupdate', () => {

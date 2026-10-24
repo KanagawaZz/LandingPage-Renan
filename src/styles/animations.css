@@ -102,8 +102,7 @@
   transition-delay: 0.28s;
 }
 
-/* Hero: entrada lenta e encadeada quando a abertura do filme termina
-   (o fim desta entrada libera a rolagem: ENTRANCE_DURATION em utils/heroFilm.js) */
+/* Hero: entrada lenta e encadeada quando a abertura do filme termina */
 .js .hero-section .reveal {
   transition-duration: 2s;
   /* curva suave do início ao fim: o movimento se distribui pela duração inteira */
