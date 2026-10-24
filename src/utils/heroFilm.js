@@ -14,7 +14,12 @@ const INTERRUPTIONS = ['wheel', 'touchmove', 'keydown', 'pointerdown'];
 export function initHeroFilm({ lockScroll = () => {}, unlockScroll = () => {} } = {}) {
   const hero = document.querySelector('#hero');
   const video = document.querySelector('#heroFilm');
-  if (!hero || !video) return;
+  // O index.html já liga a abertura no primeiro quadro; daqui em diante este módulo a controla
+  clearTimeout(window.__heroFilmFallback);
+  if (!hero || !video) {
+    document.documentElement.classList.remove('hero-film-intro');
+    return;
+  }
 
   const heroItems = hero.querySelectorAll('.reveal');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -10,6 +10,14 @@
       document.documentElement.classList.add('js');
       // A abertura do hero acontece no topo: não restaurar a rolagem ao recarregar
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      // Estado de abertura desde o primeiro quadro, para menu e conteúdo só entrarem
+      // (heroFilm.js assume daqui; se o JS não carregar, a trava devolve tudo em 8 s)
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('hero-film-intro');
+        window.__heroFilmFallback = setTimeout(function () {
+          document.documentElement.classList.remove('hero-film-intro');
+        }, 8000);
+      }
     </script>
 
     <!-- Title, description, Open Graph, Twitter e JSON-LD: gerados no build a partir de src/data/siteConfig.js -->
