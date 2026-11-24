@@ -46,19 +46,6 @@ export default function PracticeAreas() {
             </div>
             ${highlightsHtml}
           </div>
-
-          <div class="bento-card-footer">
-            <span class="bento-badge">${area.badge}</span>
-            <a
-              href="${createWhatsAppLink('custom', area.whatsappMessage)}"
-              class="bento-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>${area.btnLabel}</span>
-              ${Icon('arrow-up-right', 'link-icon')}
-            </a>
-          </div>
         </article>
       `;
     })
@@ -72,13 +59,19 @@ export default function PracticeAreas() {
           <h2 id="practice-title" class="section-title">
             Da investigação ao cumprimento da pena
           </h2>
-          <p class="section-subtitle desktop-only">
+          <p class="section-subtitle">
             Se o seu caso for diferente destes, vale conversar mesmo assim.
           </p>
         </div>
 
         <div class="bento-grid">
           ${cardsHtml}
+        </div>
+        <div class="practice-contact">
+          <a href="${createWhatsAppLink()}" class="button button-primary" target="_blank" rel="noopener noreferrer">
+            ${Icon('whatsapp', 'btn-icon')}
+            <span>Conversar sobre meu caso</span>
+          </a>
         </div>
       </div>
     </section>

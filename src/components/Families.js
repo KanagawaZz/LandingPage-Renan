@@ -33,7 +33,7 @@ export default function Families() {
   const pointsHtml = points.map((point) => `<li>${Icon('check')}<span>${point}</span></li>`).join('');
 
   return `
-    <section class="families-section desktop-only" id="familiares" aria-labelledby="families-title">
+    <section class="families-section" id="familiares" aria-labelledby="families-title">
       <div class="container families-grid">
         <div class="families-content reveal" data-reveal="from-left">
           <span class="section-badge">Presos e familiares</span>

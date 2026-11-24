@@ -32,7 +32,7 @@ export default function About() {
               </p>
               <!-- REVISAR COM O ADVOGADO: confirmar que o atendimento é sempre feito diretamente por ele -->
               <p>
-                O atendimento é feito diretamente comigo, do primeiro contato ao acompanhamento do caso. Você fala com quem está, de fato, cuidando da sua defesa.
+                O atendimento é feito diretamente comigo, do primeiro contato ao acompanhamento do caso.
               </p>
             </div>
           </div>

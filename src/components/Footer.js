@@ -63,15 +63,11 @@ export default function Footer() {
           </div>
 
           <div class="footer-contact-col desktop-only">
-            <h2 class="footer-heading">Atendimento e Plantão</h2>
+            <h2 class="footer-heading">Atendimento</h2>
             <ul class="footer-info-list">
               <li>
                 <span class="info-icon">${Icon('map-pin')}</span>
                 <span><strong>Cidades-Base:</strong> ${lawyer.cities}</span>
-              </li>
-              <li>
-                <span class="info-icon">${Icon('clock')}</span>
-                <span><strong>Plantão:</strong> Flagrantes e Custódias</span>
               </li>
               <li>
                 <span class="info-icon">${Icon('whatsapp')}</span>

@@ -4,9 +4,19 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import siteConfig from './data/siteConfig.js';
 import { initConsent } from './utils/consent.js';
-import { initHeroFilm } from './utils/heroFilm.js';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const heroVideo = document.querySelector('.hero-film-video');
+if (heroVideo && !prefersReducedMotion) {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  heroVideo.src = isMobile ? '/videos/hero-film-mobile.mp4' : '/videos/hero-film.mp4';
+  heroVideo.play().then(() => {
+    heroVideo.classList.add('is-playing');
+  }).catch(() => {
+    heroVideo.removeAttribute('src');
+  });
+}
 
 // ==========================================================================
 // INTERACTIVE FEATURES & ANIMATIONS
@@ -29,9 +39,6 @@ if (!prefersReducedMotion) {
   }
   requestAnimationFrame(raf);
 }
-
-// 1b. Filme de abertura do hero (a rolagem continua livre durante a abertura)
-initHeroFilm();
 
 // 2. Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
@@ -64,6 +71,8 @@ if (menuToggle && mobileNav) {
 // 3. Scroll Progress & Header Scroll state (RAF Throttled)
 const header = document.querySelector('#siteHeader');
 const scrollProgress = document.querySelector('.scroll-progress');
+const heroContact = document.querySelector('.hero-actions .button-primary');
+const floatingContact = document.querySelector('#whatsappFloat');
 let ticking = false;
 
 function updateScrollState() {
@@ -76,6 +85,10 @@ function updateScrollState() {
   }
   if (header) {
     header.classList.toggle('is-scrolled', scrollY > 24);
+  }
+  if (heroContact && floatingContact) {
+    const passedContact = heroContact.getBoundingClientRect().bottom <= (header?.getBoundingClientRect().bottom ?? 0);
+    floatingContact.classList.toggle('is-suppressed', !passedContact);
   }
   ticking = false;
 }
@@ -90,32 +103,22 @@ window.addEventListener(
   },
   { passive: true }
 );
+window.addEventListener('resize', updateScrollState);
+window.addEventListener('pageshow', updateScrollState);
 updateScrollState();
 
-// 4. Scroll Triggered Reveals (o conteúdo só é ocultado quando há JS: classe .js no <html>)
-// Mão dupla: ao sair da tela o elemento volta ao estado inicial e anima de novo ao retornar,
-// rolando para baixo ou para cima. Exceção: o hero entra uma única vez por carregamento
-// (durante a abertura do filme ele é controlado por heroFilm.js e depois nunca é desarmado).
-const revealElements = document.querySelectorAll('.reveal');
-
+// 4. Anima cada se??o uma vez ao entrar na tela.
 if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      const filmIntro = document.documentElement.classList.contains('hero-film-intro');
-      entries.forEach((entry) => {
-        if (entry.target.closest('#hero')) {
-          if (!filmIntro && entry.isIntersecting) entry.target.classList.add('is-visible');
-          return;
-        }
-        entry.target.classList.toggle('is-visible', entry.isIntersecting);
-      });
-    },
-    { threshold: 0.12, rootMargin: '-20px 0px -20px 0px' }
-  );
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) return;
+      target.classList.add('is-visible');
+      revealObserver.unobserve(target);
+    });
+  }, { threshold: 0.08 });
 
-  revealElements.forEach((el) => revealObserver.observe(el));
-} else {
-  revealElements.forEach((el) => el.classList.add('is-visible'));
+  document.documentElement.classList.add('js');
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 }
 
 // 5. Bento Grid Interactive Spotlight Effect

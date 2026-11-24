@@ -112,13 +112,6 @@ html, body {
     gap: 1.25rem;
   }
 
-  /* Urgency */
-  .urgency-card {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 2rem;
-    padding: 2.5rem 2rem;
-  }
-
   /* Footer */
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
@@ -179,6 +172,14 @@ html, body {
   }
 
   /* Hero Section */
+  .hero-film {
+    background-image: url('/images/hero-film-end-mobile.webp');
+  }
+
+  .hero-film::after {
+    background: linear-gradient(180deg, rgba(var(--ink-rgb), 0.92) 0%, rgba(var(--ink-rgb), 0.85) 58%, rgba(var(--ink-rgb), 0.55) 100%);
+  }
+
   .hero-section {
     padding-top: calc(5.5rem + var(--sat));
     padding-bottom: 3.5rem;
@@ -190,25 +191,7 @@ html, body {
   }
 
   .hero-content {
-    order: 1;
     align-items: flex-start;
-  }
-
-  .hero-badge {
-    padding: 0.4rem 0.85rem;
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .badge-text {
-    font-size: 0.775rem;
-    line-height: 1.35;
-  }
-
-  .hero-meta {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.65rem;
   }
 
   .hero-title {
@@ -227,7 +210,7 @@ html, body {
     flex-direction: column;
     width: 100%;
     gap: 0.85rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
   }
 
   .hero-actions .button {
@@ -249,9 +232,7 @@ html, body {
   }
 
   .hero-media {
-    order: 2;
     width: 100%;
-    margin-top: 1rem;
     justify-content: center;
   }
 
@@ -313,12 +294,6 @@ html, body {
 
   .bento-card-body {
     margin-bottom: 1.5rem;
-  }
-
-  .bento-card-footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 
   /* About Section */
@@ -398,16 +373,41 @@ html, body {
   .timeline-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0;
   }
 
   .timeline-line {
     display: none !important;
   }
 
+  .timeline-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+  }
+
+  .timeline-marker {
+    align-items: flex-start;
+    margin: 0;
+  }
+
   .timeline-content {
-    padding: 1.5rem 1.25rem;
-    border-radius: var(--radius-md);
+    padding: 0 0 0.9rem;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-sand-border);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .timeline-step:hover .timeline-content {
+    transform: none;
+    border-color: var(--color-sand-border);
+    box-shadow: none;
+  }
+
+  .timeline-icon-box {
+    display: none;
   }
 
   .timeline-title {
@@ -451,35 +451,6 @@ html, body {
 
   .timeline-cta-box .button {
     width: 100%;
-  }
-
-  /* Urgency Banner */
-  .urgency-section {
-    padding: 1rem 0;
-  }
-
-  .urgency-card {
-    grid-template-columns: 1fr;
-    padding: 1.85rem 1.25rem;
-    gap: 1.75rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .urgency-title {
-    font-size: clamp(1.55rem, 6.5vw, 1.95rem);
-  }
-
-  .urgency-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .urgency-actions {
-    width: 100%;
-  }
-
-  .urgency-actions .button {
-    width: 100%;
-    padding: 1rem 1.25rem;
   }
 
   /* FAQ */
@@ -675,8 +646,8 @@ html, body {
     display: flex !important;
   }
 
-  /* Hero: apresentação do advogado primeiro */
   .hero-section {
+    padding-top: calc(6.25rem + var(--sat));
     padding-bottom: 3rem;
   }
 
@@ -684,21 +655,17 @@ html, body {
     gap: 1.75rem;
   }
 
-  .hero-media {
-    order: 0;
-    margin-top: 0;
-  }
-
   .hero-portrait {
     width: min(78%, 320px);
   }
 
-  .hero-title {
-    font-size: clamp(1.7rem, 7vw, 2.2rem);
-  }
-
-  .hero-actions {
-    margin-bottom: 1.5rem;
+  .hero-actions .button-secondary {
+    align-self: flex-start;
+    width: auto;
+    padding: 0.6rem 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .hero-trust-pills {
@@ -724,7 +691,7 @@ html, body {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 0.95rem;
-    align-items: center;
+    align-items: start;
   }
 
   .bento-card:hover {
@@ -733,13 +700,10 @@ html, body {
 
   .bento-card-header {
     margin: 0;
-    grid-row: span 2;
   }
 
   .bento-number,
   .bento-tag,
-  .bento-description,
-  .bento-badge,
   .card-spotlight {
     display: none;
   }
@@ -757,17 +721,6 @@ html, body {
   .bento-title {
     font-size: 1.1rem;
     margin-bottom: 0.2rem;
-  }
-
-  .bento-card-footer {
-    border-top: 0;
-    padding-top: 0;
-    min-width: 0;
-  }
-
-  .bento-link {
-    font-size: 0.825rem;
-    color: var(--color-accent-ink);
   }
 
   /* Sobre mim: só texto e credenciais (a foto já está no hero) */
@@ -817,7 +770,7 @@ html, body {
     display: block;
   }
 
-  .bento-feature .bento-description {
+  .bento-description {
     display: block;
     margin: 0.35rem 0 0.5rem;
     font-size: 0.875rem;
@@ -856,17 +809,5 @@ html, body {
   .about-row {
     grid-template-columns: 1fr;
     gap: 1.75rem;
-  }
-}
-
-/* Filme no celular: versão vertical e véu mais denso embaixo, onde fica o texto */
-@media (max-width: 768px) {
-  .hero-film {
-    background-image: url('/images/hero-film-end-mobile.webp');
-  }
-
-  .hero-film-veil {
-    background:
-      linear-gradient(to bottom, rgba(var(--ink-rgb), 0.6) 0%, rgba(var(--ink-rgb), 0.35) 22%, rgba(var(--ink-rgb), 0.82) 48%, rgba(var(--ink-rgb), 0.93) 100%);
   }
 }

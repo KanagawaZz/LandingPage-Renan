@@ -28,7 +28,6 @@ const practiceAreas = [
     gridClass: 'bento-highlight-urgent',
     description:
       'Para quem teve um familiar preso nas últimas horas e precisa saber o que acontece agora.',
-    badge: 'Plantão criminal',
     btnLabel: 'Falar sobre flagrante',
     whatsappMessage: 'Olá, Dr. Renan. Vim pelo seu site e preciso de orientação sobre uma prisão em flagrante / audiência de custódia.',
   },

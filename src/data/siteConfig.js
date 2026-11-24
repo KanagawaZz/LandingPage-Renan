@@ -2,8 +2,6 @@ const siteConfig = {
   contact: {
     whatsappDefaultMessage:
       'Olá, Dr. Renan. Vim pelo seu site e gostaria de conversar sobre um caso.',
-    whatsappUrgentMessage:
-      'Olá, Dr. Renan. Vim pelo seu site e preciso de orientação sobre uma prisão em flagrante / audiência de custódia.',
   },
   // Ferramentas de análise: só carregam depois do "Aceitar" no aviso de cookies.
   // Enquanto os dois IDs estiverem vazios, nenhum aviso aparece e nada é carregado.

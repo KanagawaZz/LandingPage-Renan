@@ -4,45 +4,23 @@ import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 export default function Hero() {
   return `
-    <section class="hero-section has-film" id="hero" aria-labelledby="hero-title">
-      <!-- Filme de abertura: o src é definido em src/utils/heroFilm.js (versão de computador ou de celular).
-           Sem JavaScript, ou depois da primeira visita, fica o último quadro como imagem de fundo. -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
       <div class="hero-film" aria-hidden="true">
-        <video
-          class="hero-film-video"
-          id="heroFilm"
-          muted
-          playsinline
-          preload="none"
-          disablepictureinpicture
-          data-src-desktop="/videos/hero-film.mp4"
-          data-src-mobile="/videos/hero-film-mobile.mp4"
-        ></video>
-        <div class="hero-film-veil"></div>
+        <video class="hero-film-video" muted playsinline preload="none" disablepictureinpicture></video>
       </div>
-
       <div class="container hero-container">
         <div class="hero-content">
-          <div class="hero-badge reveal" data-reveal="from-left" style="--stagger: 0">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span class="badge-text">Atendimento online em todo o Brasil</span>
-          </div>
-
-          <p class="hero-meta reveal" data-reveal="from-left" style="--stagger: 1">
-            ${lawyer.profession}
-          </p>
-
-          <h1 id="hero-title" class="hero-title reveal" data-reveal="from-left" style="--stagger: 2">
+          <h1 id="hero-title" class="hero-title">
             Defesa criminal com <span class="text-accent">orientação clara</span> em cada etapa.
           </h1>
 
-          <p class="hero-description reveal" data-reveal="from-left" style="--stagger: 3">
-            Atuação em execução penal, investigações e processos criminais, com acompanhamento técnico e atendimento a pessoas presas e seus familiares.
+          <p class="hero-description">
+            Atuação em execução penal, investigações e processos criminais. Orientação a pessoas presas e seus familiares sobre os próximos passos.
           </p>
 
-          <div class="hero-actions reveal" data-reveal="from-left" style="--stagger: 4">
+          <div class="hero-actions">
             <a
-              href="${createWhatsAppLink('default')}"
+              href="${createWhatsAppLink()}"
               class="button button-primary button-lg"
               target="_blank"
               rel="noopener noreferrer"
@@ -53,20 +31,21 @@ export default function Hero() {
               ${Icon('arrow-up-right', 'btn-arrow')}
             </a>
 
-            <a href="#areas" class="button button-secondary button-lg desktop-only">
+            <a href="#areas" class="button button-secondary button-lg">
               <span>Ver áreas de atuação</span>
               ${Icon('arrow', 'btn-arrow')}
             </a>
           </div>
+          <p class="hero-coverage">Atendimento online em todo o Brasil</p>
         </div>
 
-        <div class="hero-media reveal" data-reveal="from-right" style="--stagger: 2">
+        <div class="hero-media">
           <div class="hero-portrait">
             <div class="portrait-wireframe" aria-hidden="true"></div>
 
             <div class="portrait-frame">
               <img
-                src="${lawyer.photoHero}"
+                src="${lawyer.photoHeroWebp}"
                 alt="Renan Moraes - Advogado Criminalista OAB/MT 37.334"
                 class="portrait-img"
                 width="480"

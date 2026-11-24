@@ -15,7 +15,6 @@ export default function Header() {
       .join('');
 
   const navLinks = renderLinks(navigation);
-  const mobileNavLinks = renderLinks(navigation.filter((item) => item.mobile));
 
   return `
     <header class="site-header" id="siteHeader">
@@ -54,7 +53,7 @@ export default function Header() {
       <nav class="mobile-nav" id="mobileNav" hidden aria-label="Navegação Mobile">
         <div class="mobile-nav-inner container">
           <ul class="mobile-nav-list">
-            ${mobileNavLinks}
+            ${navLinks}
           </ul>
         </div>
       </nav>

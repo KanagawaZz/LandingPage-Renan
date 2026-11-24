@@ -12,7 +12,7 @@ export default function FinalCTA() {
           <div class="cta-inner">
             <span class="section-badge badge-center">Contato</span>
             <h2 id="cta-title" class="cta-title">
-              Entenda os próximos passos da sua situação jurídica
+              Fale com Renan Moraes
             </h2>
             <p class="cta-description">
               Conte o que aconteceu e combine a primeira conversa.
@@ -26,7 +26,7 @@ export default function FinalCTA() {
 
             <div class="cta-main-action">
               <a
-                href="${createWhatsAppLink('default')}"
+                href="${createWhatsAppLink()}"
                 class="button button-primary button-xl"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,10 +36,6 @@ export default function FinalCTA() {
                 <span>Falar no WhatsApp</span>
                 ${Icon('arrow-up-right', 'btn-arrow')}
               </a>
-              <p class="cta-urgent-line mobile-only">
-                ${Icon('alert-triangle')}
-                <span><strong>Prisão em flagrante ou custódia?</strong> Informe isso logo na primeira mensagem.</span>
-              </p>
             </div>
 
             <div class="cta-channels-grid">

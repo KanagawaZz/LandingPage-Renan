@@ -16,7 +16,6 @@ export default function HowItWorks() {
           <div class="timeline-icon-box">
             ${Icon(item.icon, 'timeline-icon')}
           </div>
-          <span class="timeline-subtitle">${item.subtitle}</span>
           <h3 class="timeline-title">${item.title}</h3>
           <p class="timeline-description">${item.description}</p>
         </div>
@@ -26,16 +25,12 @@ export default function HowItWorks() {
     .join('');
 
   return `
-    <section class="how-it-works-section desktop-only" id="atendimento" aria-labelledby="how-title">
+    <section class="how-it-works-section" id="atendimento" aria-labelledby="how-title">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-badge">Como funciona</span>
           <h2 id="how-title" class="section-title">
-            Uma atuação pautada em método, comunicação e responsabilidade
+            Como funciona o atendimento
           </h2>
-          <p class="section-subtitle">
-            Do primeiro contato ao acompanhamento do caso, você sabe o que está sendo feito e por quê.
-          </p>
         </div>
 
         <div class="timeline-grid">

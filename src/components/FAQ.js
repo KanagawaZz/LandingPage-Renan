@@ -22,7 +22,7 @@ export default function FAQ() {
 
   return `
     <!-- REVISAR COM O ADVOGADO -->
-    <section class="faq-section desktop-only" id="faq" aria-labelledby="faq-title">
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-header reveal">
           <span class="section-badge">Perguntas Frequentes</span>

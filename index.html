@@ -6,19 +6,6 @@
     <meta name="theme-color" content="#202a22" />
     <meta name="author" content="Renan Moraes Advocacia Criminal" />
     <meta name="robots" content="index, follow" />
-    <script>
-      document.documentElement.classList.add('js');
-      // A abertura do hero acontece no topo: não restaurar a rolagem ao recarregar
-      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      // Estado de abertura desde o primeiro quadro, para menu e conteúdo só entrarem
-      // (heroFilm.js assume daqui; se o JS não carregar, a trava devolve tudo em 8 s)
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.documentElement.classList.add('hero-film-intro');
-        window.__heroFilmFallback = setTimeout(function () {
-          document.documentElement.classList.remove('hero-film-intro');
-        }, 8000);
-      }
-    </script>
 
     <!-- Title, description, Open Graph, Twitter e JSON-LD: gerados no build a partir de src/data/siteConfig.js -->
     <!--app-head-->
@@ -31,7 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="/images/renan-hero.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/renan-hero.webp" fetchpriority="high" />
 
     <!-- Estilos no <head> (e não importados pelo JS) para já valerem no primeiro quadro,
          sem o conteúdo aparecer e sumir antes das animações de entrada -->

@@ -4,7 +4,6 @@ import PracticeAreas from './components/PracticeAreas.js';
 import About from './components/About.js';
 import HowItWorks from './components/HowItWorks.js';
 import Families from './components/Families.js';
-import UrgencyBanner from './components/UrgencyBanner.js';
 import FAQ from './components/FAQ.js';
 import FinalCTA from './components/FinalCTA.js';
 import Footer from './components/Footer.js';
@@ -30,9 +29,8 @@ export function renderApp() {
       ${PracticeAreas()}
       ${About()}
       ${ThemisBand()}
-      ${HowItWorks()}
       ${Families()}
-      ${UrgencyBanner()}
+      ${HowItWorks()}
       ${FAQ()}
       ${GoldDivider('contato')}
       ${FinalCTA()}
