@@ -1,0 +1,41 @@
+/* ==========================================================================
+   LOGO OFICIAL (componente Brand)
+   Compartilhado pela landing e pela política de privacidade. Os tamanhos menores
+   para tablet e celular ficam em responsive.css (landing) e legal.css (política).
+   ========================================================================== */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+.brand picture {
+  display: block;
+}
+
+.brand-monogram {
+  width: auto;
+  height: 42px;
+}
+
+.brand-rule {
+  width: 1px;
+  height: 30px;
+  background: rgba(var(--accent-rgb), 0.45);
+}
+
+.brand-signature {
+  width: auto;
+  height: 34px;
+}
+
+.brand-stacked .brand-logo {
+  width: 210px;
+  height: auto;
+}

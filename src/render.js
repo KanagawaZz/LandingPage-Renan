@@ -8,8 +8,8 @@ import FAQ from './components/FAQ.js';
 import FinalCTA from './components/FinalCTA.js';
 import Footer from './components/Footer.js';
 import WhatsAppButton from './components/WhatsAppButton.js';
-import GoldDivider from './components/GoldDivider.js';
-import ThemisBand from './components/ThemisBand.js';
+import DefenseOverview from './components/DefenseOverview.js';
+import OtherPracticeAreas from './components/OtherPracticeAreas.js';
 
 import siteConfig from './data/siteConfig.js';
 
@@ -17,7 +17,7 @@ export { renderSeoHead } from './utils/seo.js';
 export { renderPrivacyPage } from './utils/privacyPage.js';
 export const siteUrl = siteConfig.seo.url.replace(/\/$/, '');
 
-// Executado no build (vite.config.js): o HTML final já sai com todo o conteúdo.
+// Executado pelo plugin de pré-renderização: o HTML final já sai com todo o conteúdo.
 // Seções com .desktop-only ficam ocultas no celular (ver responsive.css).
 export function renderApp() {
   return `
@@ -25,14 +25,13 @@ export function renderApp() {
     ${Header()}
     <main id="mainContent">
       ${Hero()}
-      ${GoldDivider('hero')}
+      ${DefenseOverview()}
       ${PracticeAreas()}
       ${About()}
-      ${ThemisBand()}
-      ${Families()}
+      ${OtherPracticeAreas()}
       ${HowItWorks()}
+      ${Families()}
       ${FAQ()}
-      ${GoldDivider('contato')}
       ${FinalCTA()}
     </main>
     ${Footer()}

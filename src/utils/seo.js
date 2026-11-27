@@ -10,19 +10,22 @@ function structuredData() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
-    name: `${lawyer.name} - Advocacia Criminal`,
+    name: `${lawyer.name} Advogado`,
     alternateName: lawyer.name,
     description: siteConfig.seo.description,
     url: siteConfig.seo.url || undefined,
     telephone: `+${lawyer.whatsappNumber}`,
     email: lawyer.email,
     image: absoluteUrl(siteConfig.seo.ogImage),
+    logo: absoluteUrl('/icon-512.png'),
     areaServed: {
       '@type': 'Country',
       name: 'Brasil',
     },
     knowsAbout: [
       'Direito Penal',
+      'Processo Penal',
+      'Investigação e Inquérito Policial',
       'Execução Penal',
       'Audiência de Custódia',
       'Prisão em Flagrante',
@@ -33,6 +36,7 @@ function structuredData() {
     sameAs: [lawyer.instagramUrl],
     employee: {
       '@type': 'Person',
+      honorificPrefix: 'Dr.',
       name: lawyer.name,
       jobTitle: lawyer.profession,
       alumniOf: 'Centro Universitário de Várzea Grande (UNIVAG)',
@@ -57,7 +61,7 @@ export function renderSeoHead() {
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="${escapeAttr(lawyer.name)} Advocacia Criminal" />
+    <meta property="og:site_name" content="${escapeAttr(lawyer.name)} Advogado" />
     <meta property="og:title" content="${escapeAttr(title)}" />
     <meta property="og:description" content="${escapeAttr(description)}" />
     ${url ? `<meta property="og:url" content="${url}" />` : ''}

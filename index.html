@@ -3,27 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#202a22" />
-    <meta name="author" content="Renan Moraes Advocacia Criminal" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <meta name="author" content="Dr. Renan Moraes, Advogado" />
     <meta name="robots" content="index, follow" />
 
     <!-- Title, description, Open Graph, Twitter e JSON-LD: gerados no build a partir de src/data/siteConfig.js -->
     <!--app-head-->
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preload" as="image" href="/images/renan-hero.webp" fetchpriority="high" />
+    <!-- Fontes do próprio site (src/styles/fonts.css): as três aparecem já na abertura -->
+    <link rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/playfair-display-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/playfair-display-italic-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin />
+    <!-- Retrato do hero (LCP): mesmo recorte e tamanhos do <picture> em src/components/Hero.js -->
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(width > 768px)"
+      imagesrcset="/images/renan-retrato-recorte-560.webp 560w, /images/renan-retrato-recorte-840.webp 840w, /images/renan-retrato-recorte-1086.webp 1086w"
+      imagesizes="(width > 900px) min(50vw, 720px), min(100vw, 640px)" />
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-width: 768px)"
+      imagesrcset="/images/renan-retrato-recorte-mobile-480.webp 480w, /images/renan-retrato-recorte-mobile-800.webp 800w"
+      imagesizes="min(100vw, 640px)" />
 
     <!-- Estilos no <head> (e não importados pelo JS) para já valerem no primeiro quadro,
          sem o conteúdo aparecer e sumir antes das animações de entrada -->
+    <link rel="stylesheet" href="/src/styles/fonts.css" />
     <link rel="stylesheet" href="/src/styles/variables.css" />
     <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/brand.css" />
     <link rel="stylesheet" href="/src/styles/responsive.css" />
     <link rel="stylesheet" href="/src/styles/animations.css" />
   </head>

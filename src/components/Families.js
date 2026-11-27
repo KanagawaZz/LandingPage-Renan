@@ -1,4 +1,6 @@
 import Icon from './Icon.js';
+import siteConfig from '../data/siteConfig.js';
+import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 // <!-- REVISAR COM O ADVOGADO -->
 const checklist = [
@@ -18,9 +20,9 @@ const points = [
 export default function Families() {
   const checklistHtml = checklist
     .map(
-      (item) => `
+      (item, index) => `
       <li>
-        ${Icon('check')}
+        <span class="families-check-num" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
         <div>
           <strong>${item.title}</strong>
           <span>${item.description}</span>
@@ -30,13 +32,13 @@ export default function Families() {
     )
     .join('');
 
-  const pointsHtml = points.map((point) => `<li>${Icon('check')}<span>${point}</span></li>`).join('');
+  const pointsHtml = points.map((point) => `<li><span class="families-dash" aria-hidden="true"></span><span>${point}</span></li>`).join('');
 
   return `
     <section class="families-section" id="familiares" aria-labelledby="families-title">
       <div class="container families-grid">
-        <div class="families-content reveal" data-reveal="from-left">
-          <span class="section-badge">Presos e familiares</span>
+        <div class="families-content reveal">
+          <p class="eyebrow">Presos e familiares</p>
           <h2 id="families-title" class="section-title">Orientação para quem tem um familiar preso</h2>
           <p class="families-lead">
             Você pode entrar em contato em nome de um familiar preso para entender o que está acontecendo e quais são os próximos passos.
@@ -44,14 +46,21 @@ export default function Families() {
           <ul class="families-points">
             ${pointsHtml}
           </ul>
-          <a href="#contato" class="button button-secondary">
+          <a
+            href="${createWhatsAppLink(siteConfig.contact.whatsappFamilyMessage)}"
+            class="button button-primary button-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ${Icon('whatsapp', 'btn-icon')}
             <span>Falar sobre um familiar preso</span>
-            ${Icon('arrow', 'btn-arrow')}
+            ${Icon('arrow-up-right', 'btn-arrow')}
           </a>
         </div>
 
-        <div class="families-card reveal" data-reveal="from-right" style="--stagger: 1">
-          <h3>O que ajuda na primeira conversa</h3>
+        <div class="families-card reveal" style="--stagger: 1">
+          <p class="families-card-label">Para a primeira conversa</p>
+          <h3>O que ajuda na análise</h3>
           <ul class="families-checklist">
             ${checklistHtml}
           </ul>

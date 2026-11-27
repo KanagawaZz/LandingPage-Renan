@@ -1,8 +1,6 @@
 /* ==========================================================================
-   ULTRA-RESPONSIVE ADAPTIVE STYLES (Mobile, Tablet & Large Screens)
+   RESPONSIVO
    ========================================================================== */
-
-/* Safe area support for iOS / Modern Android */
 :root {
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
@@ -10,634 +8,159 @@
   --sar: env(safe-area-inset-right, 0px);
 }
 
-/* Base protection against horizontal overflow on all screen sizes */
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
+  /* Recorta a saída lateral sem criar um contêiner de rolagem para os elementos sticky. */
+  overflow-x: clip;
 }
 
-/* ==========================================================================
-   LAPTOPS & DESKTOPS (1025px - 1280px)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Notebooks (até 1200px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1200px) {
   :root {
-    --container-max-width: 100%;
     --container-padding: 2rem;
   }
 
-  .bento-grid {
-    gap: 1.25rem;
-  }
-
-  .bento-card {
-    padding: 2rem 1.65rem;
+  .hero-title {
+    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
   }
 }
 
-/* ==========================================================================
-   TABLETS (769px - 1024px)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Tablets (até 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   :root {
     --container-padding: 1.75rem;
-    --section-spacing: clamp(3.5rem, 6vw, 5.5rem);
   }
 
-  /* Header */
+  .desktop-nav,
   .desktop-nav .nav-list {
-    gap: 1.25rem;
-  }
-
-  .nav-link {
-    font-size: 0.85rem;
-  }
-
-  /* Hero */
-  .hero-container {
-    grid-template-columns: 1fr 0.9fr;
-    gap: 2.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 3.8vw, 3rem);
-  }
-
-  /* Bento Grid */
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .bento-highlight-primary {
-    grid-column: span 2;
-  }
-
-  .bento-highlight-urgent {
-    grid-column: span 2;
-  }
-
-  .bento-highlight-wide {
-    grid-column: span 2;
-  }
-
-  /* About */
-  .about-grid {
-    grid-template-columns: 1fr 1.1fr;
-    gap: 3rem;
-  }
-
-  .pillars-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-
-  .pillar-card {
-    padding: 1.75rem 1.4rem;
-  }
-
-  /* Timeline */
-  .timeline-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem;
-  }
-
-  .timeline-step:nth-child(2) .timeline-line {
-    display: none;
-  }
-
-  /* Checklist Grid Tablet */
-  .checklist-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  /* Footer */
-  .footer-top-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
-  .footer-brand-col {
-    grid-column: span 2;
-  }
-}
-
-/* ==========================================================================
-   MOBILE DEVICES (max-width: 768px)
-   ========================================================================== */
-@media (max-width: 768px) {
-  :root {
-    --container-padding: 1.25rem;
-    --section-spacing: 4rem;
-  }
-
-  /* Header & Navigation */
-  .site-header {
-    padding: 0.85rem 0;
-  }
-
-  .desktop-nav {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: flex;
-    min-height: 44px;
-    min-width: 44px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .button-header {
-    display: none;
-  }
-
-  .mobile-nav {
-    top: 64px;
-    padding: 1.75rem 0 calc(2rem + var(--sab)) 0;
-    max-height: calc(100vh - 64px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-nav-list {
-    gap: 1rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .mobile-nav-list .nav-link {
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
-  }
-
-  /* Hero Section */
-  .hero-film {
-    background-image: url('/images/hero-film-end-mobile.webp');
-  }
-
-  .hero-film::after {
-    background: linear-gradient(180deg, rgba(var(--ink-rgb), 0.92) 0%, rgba(var(--ink-rgb), 0.85) 58%, rgba(var(--ink-rgb), 0.55) 100%);
-  }
-
-  .hero-section {
-    padding-top: calc(5.5rem + var(--sat));
-    padding-bottom: 3.5rem;
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .hero-content {
-    align-items: flex-start;
-  }
-
-  .hero-title {
-    font-size: clamp(1.85rem, 7.5vw, 2.45rem);
-    line-height: 1.2;
-    margin-bottom: 1.15rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    line-height: 1.65;
-    margin-bottom: 1.85rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.85rem;
-    margin-bottom: 0;
-  }
-
-  .hero-actions .button {
-    width: 100%;
-    padding: 0.95rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .hero-trust-pills {
-    flex-direction: column;
-    gap: 0.65rem;
-    padding-top: 1.35rem;
-  }
-
-  .trust-pill {
-    width: 100%;
-    font-size: 0.825rem;
-    padding: 0.45rem 0.85rem;
-  }
-
-  .hero-media {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .hero-portrait {
-    width: min(85%, 360px);
-    margin: 0 auto;
-    padding: 14px 16px 30px 0;
-  }
-
-  .portrait-index {
-    display: none;
-  }
-
-  .hero-floating-card {
-    bottom: 8px;
-    left: 8px;
-    right: 22px;
-    padding: 0.65rem 0.85rem;
-    gap: 0.65rem;
-  }
-
-  .floating-card-title {
-    font-size: 0.925rem;
-  }
-
-  .floating-card-subtitle {
-    font-size: 0.75rem;
-  }
-
-  /* Bento Grid */
-  .bento-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
-  }
-
-  .bento-highlight-primary,
-  .bento-highlight-urgent,
-  .bento-highlight-wide {
-    grid-column: span 1;
-  }
-
-  .bento-card {
-    padding: 1.65rem 1.25rem;
-    border-radius: var(--radius-md);
-  }
-
-  .bento-card-header {
-    margin-bottom: 1.15rem;
-  }
-
-  .bento-title {
-    font-size: 1.3rem;
-  }
-
-  .bento-description {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .bento-card-body {
-    margin-bottom: 1.5rem;
-  }
-
-  /* About Section */
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .about-media {
-    max-width: 380px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .about-text p {
-    font-size: 0.975rem;
-    line-height: 1.7;
+    gap: 1.35rem;
   }
 
   .about-credentials {
-    padding: 1.25rem 1.15rem;
-    gap: 1rem;
-    margin: 1.5rem 0 1.75rem 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .credential-item {
-    gap: 0.75rem;
+  .brand-signature {
+    height: 30px;
   }
 
-  .credential-item strong {
-    font-size: 0.9rem;
+  .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5rem;
   }
 
-  .credential-item p {
-    font-size: 0.85rem;
-    word-break: break-word;
-  }
-
-  .about-cta .button {
-    width: 100%;
-    padding: 0.95rem 1.25rem;
-    font-size: 0.925rem;
-  }
-
-  .pillars-container {
-    padding-top: 3rem;
-  }
-
-  .pillars-header {
-    margin-bottom: 2rem;
-  }
-
-  .pillars-main-title {
-    font-size: 1.5rem;
-  }
-
-  .pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
-  }
-
-  .pillar-card {
-    padding: 1.65rem 1.25rem;
-    border-radius: var(--radius-md);
-  }
-
-  .pillar-title {
-    font-size: 1.25rem;
-  }
-
-  .pillar-description {
-    font-size: 0.9rem;
-  }
-
-  /* Timeline */
-  .timeline-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-bottom: 0;
-  }
-
-  .timeline-line {
-    display: none !important;
-  }
-
-  .timeline-step {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.85rem;
-  }
-
-  .timeline-marker {
-    align-items: flex-start;
-    margin: 0;
-  }
-
-  .timeline-content {
-    padding: 0 0 0.9rem;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--color-sand-border);
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .timeline-step:hover .timeline-content {
-    transform: none;
-    border-color: var(--color-sand-border);
-    box-shadow: none;
-  }
-
-  .timeline-icon-box {
+  /* Em duas colunas, cada linha de passos ganha o próprio fio (01→02 e 03→04) */
+  .steps-line {
     display: none;
   }
 
-  .timeline-title {
-    font-size: 1.15rem;
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: calc(-1 * var(--steps-gap));
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-accent-dark), rgba(122, 95, 44, 0.6));
   }
 
-  .checklist-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .editorial-checklist-card {
-    padding: 1.4rem 1.25rem;
-  }
-
-  .card-item-title {
-    font-size: 1.25rem;
-  }
-
-  .card-item-desc {
-    font-size: 0.875rem;
-  }
-
-  .practice-audience-tag {
-    font-size: 0.85rem;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-  }
-
-  .timeline-cta-box {
-    flex-direction: column;
-    padding: 1.5rem 1.25rem;
-    text-align: center;
-    gap: 1.25rem;
-    border-radius: var(--radius-md);
-  }
-
-  .cta-box-text h4 {
-    font-size: 1.2rem;
-  }
-
-  .timeline-cta-box .button {
-    width: 100%;
-  }
-
-  /* FAQ */
-  .faq-list {
-    margin-bottom: 2.5rem;
-  }
-
-  .faq-summary {
-    padding: 1.15rem 1.15rem;
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-
-  .faq-answer {
-    padding: 0 1.15rem 1.25rem 1.15rem;
-    font-size: 0.9rem;
-  }
-
-  .faq-help-box {
-    flex-direction: column;
-    padding: 1.35rem 1.15rem;
-    text-align: center;
-    gap: 1.25rem;
-    border-radius: var(--radius-md);
-  }
-
-  .help-box-content {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .faq-help-box .button {
-    width: 100%;
-  }
-
-  /* Final CTA Mobile (Compact & Balanced) */
-  .final-cta-section {
-    padding: 2.25rem 0 2.5rem 0;
-  }
-
-  .final-cta-card {
-    padding: 1.85rem 1.15rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .cta-title {
-    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-description {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-
-  .cta-highlight-pills {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-    margin-bottom: 1.35rem;
-  }
-
-  .highlight-pill {
-    justify-content: center;
-    font-size: 0.8rem;
-    padding: 0.4rem 0.75rem;
-  }
-
-  .cta-main-action {
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-main-action .button {
-    width: 100%;
-    padding: 0.9rem 1.25rem;
-    font-size: 0.95rem;
-  }
-
-  .cta-channels-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-    padding-top: 1.25rem;
-  }
-
-  .channel-item {
-    padding: 0.65rem 0.85rem;
-  }
-
-  .channel-item {
-    padding: 0.85rem 1rem;
-  }
-
-  /* Footer */
-  .site-footer {
-    padding: 3rem 0 calc(2rem + var(--sab)) 0;
+  .step:nth-child(even)::before {
+    right: 0;
+    background: linear-gradient(90deg, rgba(122, 95, 44, 0.6), rgba(122, 95, 44, 0.25));
   }
 
   .footer-top-grid {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-    margin-bottom: 2.5rem;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet em pé e abaixo (até 900px): o hero vira composição vertical,
+   com o retrato no topo e o texto entrando sobre a parte já escurecida.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-section {
+    display: block;
+    min-height: 0;
+    padding: 0 0 4rem;
   }
 
-  .footer-brand-col {
-    grid-column: span 1;
-  }
-
-  .footer-ethical-notice p {
-    font-size: 0.775rem;
-  }
-
-  .footer-copyright-bar {
-    flex-direction: column;
-    gap: 0.4rem;
-    text-align: center;
-    font-size: 0.75rem;
-  }
-
-  /* Floating WhatsApp on Mobile */
-  .whatsapp-float-container {
-    bottom: calc(16px + var(--sab));
-    right: calc(16px + var(--sar));
-  }
-
-  .whatsapp-float {
-    width: 56px;
-    height: 56px;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-  }
-
-  .whatsapp-float-icon .icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .whatsapp-float-tooltip {
+  /* O vídeo só toca acima de 900px. Abaixo disso o poster mostrava apenas
+     um traço solto do monograma na borda, então o fundo fica só com os gradientes. */
+  .hero-film {
     display: none;
   }
+
+  .hero-media {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(340px, 56svh, 640px);
+    margin-top: calc(var(--header-height) + var(--sat));
+  }
+
+  .hero-portrait {
+    --portrait-fade: linear-gradient(to bottom, #000 62%, transparent 97%);
+  }
+
+  .hero-portrait picture {
+    width: min(100%, 640px);
+    margin-inline: auto;
+  }
+
+  .hero-portrait-img {
+    object-position: 50% 6%;
+  }
+
+  .hero-container {
+    margin-top: -6rem;
+  }
+
+  .hero-content {
+    max-width: 640px;
+  }
+
+  .overview-copy,
+  .other-areas-grid,
+  .families-grid,
+  .journey-layout,
+  .faq-layout,
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .journey-aside-inner,
+  .faq-aside {
+    position: static;
+  }
+
+  .journey-section.is-animated .journey-counter {
+    display: none;
+  }
+
+
+  .contact-layout {
+    align-items: start;
+  }
 }
 
-/* ==========================================================================
-   EXTRA SMALL DEVICES (iPhone SE, Galaxy S, 320px - 380px)
-   ========================================================================== */
-@media (max-width: 380px) {
-  :root {
-    --container-padding: 1rem;
-  }
-
-  .brand-monogram {
-    width: 34px;
-    height: 34px;
-  }
-
-  .brand-monogram span {
-    font-size: 0.95rem;
-  }
-
-  .brand-name {
-    font-size: 0.975rem;
-  }
-
-  .brand-title {
-    font-size: 0.65rem;
-  }
-
-  .hero-title {
-    font-size: 1.7rem;
-  }
-
-  .section-title {
-    font-size: 1.6rem;
-  }
-
-  .button {
-    font-size: 0.875rem;
-    padding: 0.85rem 1.15rem;
-  }
-
-  .bento-title {
-    font-size: 1.15rem;
-  }
-}
-
-/* ==========================================================================
-   MOBILE OBJETIVO: hero → o que resolvo → sobre mim → contato
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Celulares (até 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+    --header-height: 64px;
+  }
+
   .desktop-only {
     display: none !important;
   }
@@ -646,168 +169,290 @@ html, body {
     display: flex !important;
   }
 
+  .site-header,
+  .site-header.is-scrolled {
+    padding: 0.6rem 0;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .brand {
+    gap: 0.7rem;
+  }
+
+  .brand-monogram {
+    height: 36px;
+  }
+
+  .brand-rule {
+    height: 24px;
+  }
+
+  .brand-signature {
+    height: 28px;
+  }
+
+  /* Hero */
   .hero-section {
-    padding-top: calc(6.25rem + var(--sat));
-    padding-bottom: 3rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .hero-media {
+    height: clamp(300px, 46svh, 520px);
+  }
+
+  .hero-portrait-img {
+    object-position: 50% 0%;
   }
 
   .hero-container {
-    gap: 1.75rem;
+    margin-top: -4.25rem;
   }
 
-  .hero-portrait {
-    width: min(78%, 320px);
+  .hero-eyebrow {
+    margin-bottom: 1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
   }
 
-  .hero-actions .button-secondary {
-    align-self: flex-start;
-    width: auto;
-    padding: 0.6rem 0;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
+  .hero-title {
+    margin-bottom: 1.1rem;
+    font-size: clamp(2.05rem, 9.2vw, 2.75rem);
+    line-height: 1.08;
   }
 
-  .hero-trust-pills {
-    flex-direction: row;
-    padding-top: 1.15rem;
-  }
-
-  .trust-pill {
-    width: auto;
-  }
-
-  /* O que eu resolvo: lista compacta */
-  .practice-section .section-header {
+  .hero-description {
     margin-bottom: 1.75rem;
+    font-size: 0.98rem;
+    line-height: 1.68;
   }
 
-  .bento-grid {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
     gap: 0.75rem;
   }
 
-  .bento-card {
-    padding: 1.1rem 1.1rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 0.95rem;
-    align-items: start;
+  .hero-actions .button {
+    width: 100%;
   }
 
-  .bento-card:hover {
-    transform: none;
+  .hero-meta {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
   }
 
-  .bento-card-header {
-    margin: 0;
+  .hero-oab-link {
+    min-height: 44px;
   }
 
-  .bento-number,
-  .bento-tag,
-  .card-spotlight {
+  /* Jornada */
+  .journey-stage {
+    padding-left: 2.5rem;
+  }
+
+  .journey-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .journey-footer .button {
+    width: 100%;
+  }
+
+  /* Sobre */
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .about-visual {
+    justify-self: center;
+  }
+
+  .about-frame {
+    --about-frame-gap: clamp(13px, 2.3vw, 16px);
+    --about-frame-offset: 2px;
+  }
+
+  .about-credentials {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Contato: o e-mail cabe numa linha em 390px (abaixo disso quebra só antes do "@") */
+  .contact-channel {
+    column-gap: 1rem;
+    padding: 1.25rem 0;
+  }
+
+  .contact-channel-value {
+    font-size: clamp(1.05rem, 4.6vw, 1.25rem);
+  }
+
+  .contact-intro .button {
+    width: 100%;
+  }
+
+  .footer-monogram {
+    width: 80vw;
+    bottom: -6%;
+  }
+
+  .hero-eyebrow-sep {
     display: none;
   }
 
-  .bento-icon-wrapper {
-    width: 42px;
-    height: 42px;
+  .hero-eyebrow {
+    flex-direction: column;
   }
 
-  .bento-card-body {
-    margin: 0;
-    min-width: 0;
+  /* Sobre */
+  .about-text p {
+    font-size: 1rem;
   }
 
-  .bento-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
+  /* FAQ */
+  .faq-summary {
+    padding: 1.2rem 0;
+    font-size: 1rem;
   }
 
-  /* Sobre mim: só texto e credenciais (a foto já está no hero) */
-  .about-grid {
-    margin-bottom: 0;
+  .faq-answer {
+    padding-right: 0;
+    font-size: 0.925rem;
   }
 
-  /* Rodapé enxuto */
+  /* Rodapé */
+  .site-footer {
+    padding: 3rem 0 calc(2rem + var(--sab));
+  }
+
   .footer-top-grid {
-    margin-bottom: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
-  .footer-tagline {
-    margin-bottom: 1rem;
-  }
-
-  .gold-divider-star {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-/* Áreas: execução penal em destaque em tablet e celular */
-@media (max-width: 1024px) {
-  .bento-feature,
-  .bento-highlight-wide {
-    grid-column: span 2;
-  }
-
-  .bento-highlight-urgent {
+  .footer-brand-col {
     grid-column: span 1;
   }
 
-  .families-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .bento-feature,
-  .bento-highlight-urgent,
-  .bento-highlight-wide {
-    grid-column: span 1;
+  .brand-stacked .brand-logo {
+    width: 180px;
   }
 
-  .bento-feature .bento-card-body {
-    display: block;
+  .footer-copyright-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    font-size: 0.75rem;
   }
 
-  .bento-description {
-    display: block;
-    margin: 0.35rem 0 0.5rem;
-    font-size: 0.875rem;
+  .footer-legal-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 
-  .bento-feature .bento-title {
-    font-size: 1.2rem;
+  /* WhatsApp flutuante */
+  .whatsapp-float-container {
+    right: calc(16px + var(--sar));
+    bottom: calc(16px + var(--sab));
   }
 
-  .bento-highlights {
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+  }
+
+  .whatsapp-float-icon .icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .whatsapp-float-tooltip {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .themis-grid {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+/* --------------------------------------------------------------------------
+   Celulares estreitos
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .hero-portrait {
+    --portrait-fade: linear-gradient(to bottom, #000 48%, transparent 97%);
   }
 
-  .themis-quote {
-    font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  .steps-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.25rem;
   }
 
-  .themis-caption {
-    font-size: 0.95rem;
+  .step::before {
+    content: none;
   }
 
-  .themis-figure {
-    padding: 0 0 12px 12px;
+  /* Fio vertical à esquerda dos passos */
+  .steps-line {
+    display: block;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    left: 6px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, var(--color-accent-dark), rgba(122, 95, 44, 0.25));
+    transform-origin: top;
+  }
+
+  .js .steps-line.reveal[data-reveal='draw']:not(.is-visible) {
+    transform: scaleY(0);
+  }
+
+  .step {
+    padding: 0 0 0 2.5rem;
+  }
+
+  .step-node {
+    top: 0.4rem;
+  }
+
+  .step-number {
+    margin-bottom: 0.6rem;
+    font-size: 2.25rem;
   }
 }
 
-/* Sobre: texto e credenciais empilham em telas estreitas */
-@media (max-width: 900px) {
-  .about-row {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+@media (max-width: 380px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .brand {
+    gap: 0.55rem;
+  }
+
+  .brand-monogram {
+    height: 32px;
+  }
+
+  .brand-signature {
+    height: 25px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .button {
+    padding: 0.85rem 1.1rem;
+    font-size: 0.9rem;
   }
 }

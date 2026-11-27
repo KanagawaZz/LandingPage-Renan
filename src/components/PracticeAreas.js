@@ -1,73 +1,61 @@
-import practiceAreas from '../data/practiceAreas.js';
+import { defenseStages } from '../data/practiceAreas.js';
 import Icon from './Icon.js';
 import { createWhatsAppLink } from '../utils/whatsapp.js';
 
-// Entrada de cada card conforme a coluna que ocupa no grid de 3 colunas
-const cardReveal = [
-  { direction: 'card-center', column: 0 },
-  { direction: 'card-left', column: 0 },
-  { direction: 'card-center', column: 1 },
-  { direction: 'card-right', column: 2 },
-  { direction: 'card-left', column: 0 },
-  { direction: 'card-right', column: 1 },
-];
+const pad = (n) => String(n).padStart(2, '0');
 
 export default function PracticeAreas() {
-  const cardsHtml = practiceAreas
-    .map((area, index) => {
-      const isUrgent = area.id === 'flagrante-custodia';
-      const reveal = cardReveal[index] || { direction: 'card-center', column: 0 };
-      const highlightsHtml = area.highlights
-        ? `<ul class="bento-highlights">
-            ${area.highlights.map((item) => `<li>${Icon('check', 'bento-highlight-icon')}<span>${item}</span></li>`).join('')}
+  const total = pad(defenseStages.length);
+
+  const stages = defenseStages
+    .map(({ title, situation, activities, topics }, index) => {
+      const topicsHtml = topics.length
+        ? `<ul class="journey-topics" aria-label="Inclui">
+            ${topics.map((topic) => `<li>${topic}</li>`).join('')}
           </ul>`
         : '';
 
       return `
-        <article
-          class="bento-card ${area.gridClass} reveal"
-          data-reveal="${reveal.direction}"
-          style="--stagger: ${reveal.column}"
-          data-bento-card
-        >
-          <div class="card-spotlight" aria-hidden="true"></div>
-
-          <div class="bento-card-header">
-            <div class="bento-icon-wrapper ${isUrgent ? 'icon-urgent' : ''}">
-              ${Icon(area.icon, 'bento-icon')}
-            </div>
-          </div>
-
-          <div class="bento-card-body">
-            <div class="bento-card-text">
-              <span class="bento-tag">${area.tag}</span>
-              <h3 class="bento-title">${area.title}</h3>
-              <p class="bento-description">${area.description}</p>
-            </div>
-            ${highlightsHtml}
-          </div>
-        </article>
+        <li class="journey-stage" data-journey-stage data-index="${pad(index + 1)}">
+          <span class="journey-node" aria-hidden="true"></span>
+          <span class="journey-index" aria-hidden="true">${pad(index + 1)}</span>
+          <h3 class="journey-title">${title}</h3>
+          <p class="journey-situation">“${situation}”</p>
+          ${activities.map((activity) => `<p class="journey-activity">${activity}</p>`).join('')}
+          ${topicsHtml}
+        </li>
       `;
     })
     .join('');
 
+  // REVISAR COM O ADVOGADO: chamada do rodapé da jornada ("Não sabe em que etapa...")
   return `
-    <section class="practice-section" id="areas" aria-labelledby="practice-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-badge">Áreas de atuação</span>
-          <h2 id="practice-title" class="section-title">
-            Da investigação ao cumprimento da pena
-          </h2>
-          <p class="section-subtitle">
-            Se o seu caso for diferente destes, vale conversar mesmo assim.
-          </p>
+    <section class="journey-section" id="areas" aria-labelledby="practice-title">
+      <div class="container journey-layout">
+        <div class="journey-aside">
+          <div class="journey-aside-inner">
+            <p class="eyebrow">Áreas de atuação</p>
+            <h2 id="practice-title" class="section-title">Atuação criminal do início ao fim.</h2>
+            <p class="journey-note">
+              Cada caso tem seu próprio percurso. A atuação pode começar em qualquer uma destas etapas.
+            </p>
+
+            <div class="journey-counter" aria-hidden="true">
+              <span class="journey-counter-num" data-journey-counter>01</span>
+              <span class="journey-counter-total">/ ${total}</span>
+            </div>
+          </div>
         </div>
 
-        <div class="bento-grid">
-          ${cardsHtml}
+        <div class="journey" data-journey>
+          <span class="journey-track" aria-hidden="true"><span class="journey-progress"></span></span>
+          <ol class="journey-list">
+            ${stages}
+          </ol>
         </div>
-        <div class="practice-contact">
+
+        <div class="journey-footer">
+          <p class="journey-footer-text">Não sabe em que etapa está o seu caso?</p>
           <a href="${createWhatsAppLink()}" class="button button-primary" target="_blank" rel="noopener noreferrer">
             ${Icon('whatsapp', 'btn-icon')}
             <span>Conversar sobre meu caso</span>

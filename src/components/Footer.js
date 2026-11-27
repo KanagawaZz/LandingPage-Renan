@@ -1,8 +1,10 @@
 import lawyer from '../data/lawyer.js';
 import navigation from '../data/navigation.js';
+import Brand from './Brand.js';
 import Icon from './Icon.js';
 import siteConfig from '../data/siteConfig.js';
 
+// O contato completo fica na seção logo acima; o rodapé traz marca, navegação e aviso ético.
 const hasAnalytics = ({ analytics }) => Boolean(analytics.googleAnalyticsId || analytics.clarityId);
 
 export default function Footer() {
@@ -20,20 +22,14 @@ export default function Footer() {
 
   return `
     <footer class="site-footer" id="rodape">
+      <div class="footer-monogram" aria-hidden="true"></div>
       <div class="container footer-inner">
         <div class="footer-top-grid">
           <div class="footer-brand-col">
-            <a href="#" class="brand" aria-label="Voltar ao início">
-              <div class="brand-monogram">
-                <span>RM</span>
-              </div>
-              <div class="brand-text">
-                <span class="brand-name">Renan Moraes</span>
-                <span class="brand-title">Advocacia Criminal</span>
-              </div>
-            </a>
+            ${Brand({ variant: 'stacked', label: 'Renan Moraes, Advogado — Voltar ao início' })}
             <p class="footer-tagline">
-              Advogado criminalista com atendimento online e presencial.
+              Advocacia criminal e assistência jurídica.<br />
+              ${lawyer.cities}.
             </p>
             <div class="footer-social-links">
               <a
@@ -41,14 +37,14 @@ export default function Footer() {
                 class="social-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram de Renan Moraes"
+                aria-label="Instagram do ${lawyer.displayName} (abre em nova aba)"
               >
                 ${Icon('instagram')}
               </a>
               <a
                 href="mailto:${lawyer.email}"
                 class="social-link"
-                aria-label="E-mail ${lawyer.email}"
+                aria-label="Enviar e-mail para ${lawyer.email}"
               >
                 ${Icon('mail')}
               </a>
@@ -56,29 +52,12 @@ export default function Footer() {
           </div>
 
           <div class="footer-nav-col desktop-only">
-            <h2 class="footer-heading">Navegação Rápida</h2>
+            <h2 class="footer-heading">Navegação</h2>
             <ul class="footer-nav-list">
               ${navLinks}
             </ul>
           </div>
 
-          <div class="footer-contact-col desktop-only">
-            <h2 class="footer-heading">Atendimento</h2>
-            <ul class="footer-info-list">
-              <li>
-                <span class="info-icon">${Icon('map-pin')}</span>
-                <span><strong>Cidades-Base:</strong> ${lawyer.cities}</span>
-              </li>
-              <li>
-                <span class="info-icon">${Icon('whatsapp')}</span>
-                <span><strong>WhatsApp:</strong> ${lawyer.whatsappDisplay}</span>
-              </li>
-              <li>
-                <span class="info-icon">${Icon('mail')}</span>
-                <span><strong>E-mail:</strong> ${lawyer.email}</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div class="footer-legal-bar">
@@ -89,7 +68,7 @@ export default function Footer() {
           </div>
 
           <div class="footer-copyright-bar">
-            <p>© ${currentYear} Renan Moraes Advocacia Criminal · Todos os direitos reservados.</p>
+            <p>© ${currentYear} Renan Moraes Advogado · Todos os direitos reservados.</p>
             <nav class="footer-legal-links" aria-label="Privacidade">
               <a href="/politica-de-privacidade.html">Política de privacidade</a>
               ${hasAnalytics(siteConfig) ? '<a href="#" data-cookie-prefs>Preferências de cookies</a>' : ''}

@@ -2,78 +2,76 @@ import lawyer from '../data/lawyer.js';
 import Icon from './Icon.js';
 
 export default function About() {
+  const portrait = lawyer.institutionalPortrait;
+  const srcset = portrait.widths.map((width) => `${portrait.base}-${width}.webp ${width}w`).join(', ');
+
+  // CONFIRMAR LINK DIRETO DO CNA (lawyer.oabConsultUrl abre a busca geral)
+  // REVISAR COM O ADVOGADO: segundo parágrafo montado com os dados de lawyer.js
+
   return `
     <section class="about-section" id="sobre" aria-labelledby="about-title">
-      <div class="container">
-        <div class="about-avatar reveal desktop-only" data-reveal="zoom">
-          <div class="about-avatar-ring">
-            <picture>
-              <source srcset="${lawyer.photoHeroWebp}" type="image/webp" />
-              <img
-                src="${lawyer.photoHero}"
-                alt="Renan Moraes - Advogado Criminalista OAB/MT 37.334"
-                class="about-avatar-img"
-                width="208"
-                height="208"
-                loading="lazy"
-              />
-            </picture>
+      <div class="container about-layout">
+        <figure class="about-visual reveal">
+          <div class="about-frame">
+            <img
+              src="${portrait.base}-800.webp"
+              srcset="${srcset}"
+              sizes="(max-width: 768px) min(92vw, 440px), (max-width: 1200px) 37vw, 440px"
+              width="${portrait.width}"
+              height="${portrait.height}"
+              alt="${portrait.alt}"
+              class="about-portrait-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="about-frame-reflection" aria-hidden="true"></span>
+          </div>
+        </figure>
+
+        <div class="about-main reveal" style="--stagger: 2">
+          <p class="eyebrow">Quem conduz o seu caso</p>
+          <h2 id="about-title" class="about-name">${lawyer.displayName}</h2>
+          <p class="about-oab">
+            <span>Advogado</span>
+            <span class="about-oab-sep" aria-hidden="true"></span>
+            <span>${lawyer.oab}</span>
+            <a
+              href="${lawyer.oabConsultUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="oab-verify-link"
+              aria-label="Consultar o registro do ${lawyer.displayName} no Cadastro Nacional dos Advogados (abre em nova aba)"
+            >
+              <span>Consultar no CNA</span>
+              ${Icon('arrow-up-right', 'link-icon-sm')}
+            </a>
+          </p>
+
+          <div class="about-text">
+            <p class="about-lead">
+              Meu compromisso é conduzir a defesa com responsabilidade técnica e respeito à ética profissional.
+            </p>
+            <p>
+              ${lawyer.targetAudience} O atendimento é online em todo o Brasil e presencial em Cuiabá e Várzea Grande,
+              incluindo visitas a unidades prisionais, conforme o caso e a localidade.
+            </p>
           </div>
         </div>
 
-        <div class="about-row">
-          <div class="about-content reveal" data-reveal="from-left">
-            <span class="section-badge">Sobre mim</span>
-            <h2 id="about-title" class="section-title">Quem conduz o seu caso</h2>
-
-            <div class="about-text">
-              <p>
-                Sou <strong>Renan Moraes</strong>, advogado criminalista com foco em execução penal e na defesa de pessoas presas.
-              </p>
-              <!-- REVISAR COM O ADVOGADO: confirmar que o atendimento é sempre feito diretamente por ele -->
-              <p>
-                O atendimento é feito diretamente comigo, do primeiro contato ao acompanhamento do caso.
-              </p>
-            </div>
+        <dl class="about-credentials reveal" style="--stagger: 2">
+          <div class="credential-item">
+            <dt>Formação</dt>
+            <dd>${lawyer.education.undergrad}</dd>
           </div>
-
-          <div class="about-credentials reveal" data-reveal="from-right" style="--stagger: 1">
-              <div class="credential-item">
-                <span class="credential-icon">${Icon('shield-check')}</span>
-                <div>
-                  <strong>Registro Profissional</strong>
-                  <p>
-                    ${lawyer.oab} ·
-                    <!-- CONFIRMAR LINK DIRETO DO CNA -->
-                    <a
-                      href="${lawyer.oabConsultUrl}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="oab-verify-link"
-                      aria-label="Consultar registro de Renan Moraes no Cadastro Nacional dos Advogados (CNA/OAB)"
-                    >
-                      <span>Consultar no Cadastro Nacional da OAB (CNA)</span>
-                      ${Icon('arrow-up-right', 'link-icon-sm')}
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div class="credential-item">
-                <span class="credential-icon">${Icon('document')}</span>
-                <div>
-                  <strong>Formação Acadêmica</strong>
-                  <p>${lawyer.education.undergrad}</p>
-                </div>
-              </div>
-              <div class="credential-item">
-                <span class="credential-icon">${Icon('scale')}</span>
-                <div>
-                  <strong>Pós-graduação</strong>
-                  <p>${lawyer.education.postgrad1} · ${lawyer.education.postgrad2}</p>
-                </div>
-              </div>
+          <div class="credential-item">
+            <dt>Pós-graduação</dt>
+            <dd>${lawyer.education.postgrad1}</dd>
           </div>
-        </div>
+          <div class="credential-item">
+            <dt>Em formação</dt>
+            <dd>${lawyer.education.postgrad2}</dd>
+          </div>
+        </dl>
       </div>
     </section>
   `;

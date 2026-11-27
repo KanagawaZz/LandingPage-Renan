@@ -1,6 +1,11 @@
 // <!-- REVISAR COM O ADVOGADO -->
 const faq = [
   {
+    question: 'Posso buscar orientação antes de existir um processo criminal?',
+    answer:
+      'Sim. O acompanhamento pode começar na delegacia ou durante a investigação, inclusive quando você recebe uma intimação para depor.',
+  },
+  {
     question: 'O que acontece após o flagrante e para que serve a audiência de custódia?',
     answer:
       'O flagrante é formalizado na delegacia. Na audiência de custódia, a pessoa presa é apresentada a um juiz, que avalia a legalidade da prisão e decide se ela deve ser mantida.',
@@ -13,7 +18,7 @@ const faq = [
   {
     question: 'Qual é a diferença entre o atendimento online e o presencial?',
     answer:
-      'A conversa e o envio de documentos podem ser feitos pelo WhatsApp. O atendimento presencial é combinado conforme o caso e a localidade.',
+      'A conversa e o envio de documentos podem ser feitos pelo WhatsApp. O atendimento presencial em Cuiabá e Várzea Grande é combinado conforme o caso e a localidade.',
   },
   {
     question: 'Como são definidos os honorários?',

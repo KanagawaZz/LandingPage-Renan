@@ -1,28 +1,16 @@
-// O HTML da página é gerado no build (src/render.js + vite.config.js) e os estilos
-// são carregados no <head> do index.html. Aqui fica apenas a interatividade.
+// Ponto de entrada das interações da landing. O HTML é pré-renderizado por src/render.js.
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { initHeroVideo } from './interactions/heroVideo.js';
+import { createJourneyUpdater } from './interactions/journey.js';
+import { initNavigation } from './interactions/navigation.js';
 import siteConfig from './data/siteConfig.js';
 import { initConsent } from './utils/consent.js';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const heroVideo = document.querySelector('.hero-film-video');
-if (heroVideo && !prefersReducedMotion) {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  heroVideo.src = isMobile ? '/videos/hero-film-mobile.mp4' : '/videos/hero-film.mp4';
-  heroVideo.play().then(() => {
-    heroVideo.classList.add('is-playing');
-  }).catch(() => {
-    heroVideo.removeAttribute('src');
-  });
-}
+initHeroVideo();
 
-// ==========================================================================
-// INTERACTIVE FEATURES & ANIMATIONS
-// ==========================================================================
-
-// 1. Smooth scroll (Lenis), desligado para quem prefere menos movimento
 let lenis = null;
 if (!prefersReducedMotion) {
   lenis = new Lenis({
@@ -40,74 +28,9 @@ if (!prefersReducedMotion) {
   requestAnimationFrame(raf);
 }
 
-// 2. Mobile Menu Toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileNav = document.querySelector('#mobileNav');
+initNavigation({ lenis, prefersReducedMotion, updateJourney: createJourneyUpdater(prefersReducedMotion) });
 
-function closeMenu() {
-  if (!menuToggle || !mobileNav) return;
-  menuToggle.setAttribute('aria-expanded', 'false');
-  menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
-  mobileNav.hidden = true;
-}
-
-if (menuToggle && mobileNav) {
-  menuToggle.addEventListener('click', () => {
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', String(!isExpanded));
-    menuToggle.setAttribute('aria-label', isExpanded ? 'Abrir menu de navegação' : 'Fechar menu de navegação');
-    mobileNav.hidden = isExpanded;
-  });
-
-  mobileNav.addEventListener('click', (event) => {
-    if (event.target.closest('a')) closeMenu();
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
-  });
-}
-
-// 3. Scroll Progress & Header Scroll state (RAF Throttled)
-const header = document.querySelector('#siteHeader');
-const scrollProgress = document.querySelector('.scroll-progress');
-const heroContact = document.querySelector('.hero-actions .button-primary');
-const floatingContact = document.querySelector('#whatsappFloat');
-let ticking = false;
-
-function updateScrollState() {
-  const scrollY = window.scrollY;
-  const scrollableDistance = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollableDistance > 0 ? scrollY / scrollableDistance : 0;
-
-  if (scrollProgress) {
-    scrollProgress.style.transform = `scaleX(${progress}) translateZ(0)`;
-  }
-  if (header) {
-    header.classList.toggle('is-scrolled', scrollY > 24);
-  }
-  if (heroContact && floatingContact) {
-    const passedContact = heroContact.getBoundingClientRect().bottom <= (header?.getBoundingClientRect().bottom ?? 0);
-    floatingContact.classList.toggle('is-suppressed', !passedContact);
-  }
-  ticking = false;
-}
-
-window.addEventListener(
-  'scroll',
-  () => {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollState);
-      ticking = true;
-    }
-  },
-  { passive: true }
-);
-window.addEventListener('resize', updateScrollState);
-window.addEventListener('pageshow', updateScrollState);
-updateScrollState();
-
-// 4. Anima cada se??o uma vez ao entrar na tela.
+// Anima cada seção uma vez ao entrar na tela.
 if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
@@ -121,17 +44,6 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 }
 
-// 5. Bento Grid Interactive Spotlight Effect
-const bentoCards = document.querySelectorAll('[data-bento-card]');
-bentoCards.forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  });
-});
-
-// 6. Accordion Exclusive Toggle
 const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach((item) => {
   item.addEventListener('toggle', () => {
@@ -143,29 +55,10 @@ faqItems.forEach((item) => {
   });
 });
 
-// 7. Smooth anchor scrolling with offset (usa o Lenis quando ativo, para não haver conflito)
-const HEADER_OFFSET = 80;
-
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', (e) => {
-    const targetId = anchor.getAttribute('href');
-    const targetEl = targetId === '#' ? document.body : document.querySelector(targetId);
-    if (!targetEl) return;
-
-    e.preventDefault();
-    if (lenis) {
-      lenis.scrollTo(targetEl, { offset: -HEADER_OFFSET });
-    } else {
-      const top = targetId === '#' ? 0 : targetEl.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    }
-  });
-});
-
-// 8. Aviso de cookies: carrega GA4/Clarity só após o consentimento (sem IDs, não faz nada)
+// Aviso de cookies: carrega GA4/Clarity só após o consentimento (sem IDs, não faz nada)
 initConsent(siteConfig.analytics);
 
-// 9. Rastreamento de cliques no WhatsApp (ativo quando GA4 e/ou Meta Pixel estiverem instalados)
+// Rastreamento de cliques no WhatsApp (ativo quando GA4 e/ou Meta Pixel estiverem instalados)
 document.addEventListener('click', (event) => {
   const link = event.target.closest('a[href^="https://wa.me/"]');
   if (!link) return;

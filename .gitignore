@@ -1,4 +1,6 @@
-node_modules/
-dist/
+/node_modules/
+/dist/
+/brand/rascunhos/
+__pycache__/
 .DS_Store
-FilmHero/
+.taste-skill/

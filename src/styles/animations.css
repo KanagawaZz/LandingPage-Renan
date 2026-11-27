@@ -1,156 +1,170 @@
-/* ==========================================================================
-   ENTRADA DOS ELEMENTOS AO ROLAR A PÁGINA
-   - O conteúdo só é ocultado quando há JS (classe .js no <html>)
-   - Colunas de texto vêm da esquerda e imagens/cards laterais da direita
-   - Cards em grid: coluna da esquerda pela esquerda, centro de baixo, direita pela direita
-   - Celular: deslocamentos e desfoque menores
-   ========================================================================== */
+/* Entradas curtas, com conteúdo visível por padrão. */
 :root {
   --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
-  --reveal-side: 80px;
-  --reveal-card-side: 60px;
-  --reveal-blur: 6px;
 }
 
-/* Base (fade-up): sobe 30px */
 .js .reveal {
   opacity: 0;
-  transform: translate3d(0, 30px, 0);
-  transition:
-    opacity 0.8s var(--ease-reveal),
-    transform 0.8s var(--ease-reveal),
-    filter 0.8s var(--ease-reveal);
-  transition-delay: calc(var(--stagger, 0) * 110ms);
+  transform: translateY(12px);
+  transition: opacity 0.46s var(--ease-reveal), transform 0.46s var(--ease-reveal);
+  transition-delay: calc(var(--stagger, 0) * 55ms);
 }
 
-.js .reveal[data-reveal='from-left'] {
-  transform: translate3d(calc(var(--reveal-side) * -1), 0, 0);
-  filter: blur(var(--reveal-blur));
-  transition-duration: 1s;
-}
-
-.js .reveal[data-reveal='from-right'] {
-  transform: translate3d(var(--reveal-side), 0, 0);
-  filter: blur(var(--reveal-blur));
-  transition-duration: 1s;
-}
-
-.js .reveal[data-reveal='card-left'] {
-  transform: translate3d(calc(var(--reveal-card-side) * -1), 0, 0);
-  filter: blur(4px);
-  transition-duration: 0.85s;
-}
-
-.js .reveal[data-reveal='card-center'] {
-  transform: translate3d(0, 40px, 0);
-  filter: blur(4px);
-  transition-duration: 0.85s;
-}
-
-.js .reveal[data-reveal='card-right'] {
-  transform: translate3d(var(--reveal-card-side), 0, 0);
-  filter: blur(4px);
-  transition-duration: 0.85s;
-}
-
-.js .reveal[data-reveal='zoom'] {
-  transform: scale(0.94);
-  filter: blur(4px);
-  transition-duration: 1s;
+/* O fio dos passos usa uma revelação própria, horizontal ou vertical. */
+.js .reveal[data-reveal='draw'] {
+  opacity: 1;
+  transform: scaleX(0);
+  transition: transform 0.8s var(--ease-reveal) 0.1s;
 }
 
 .js .reveal.is-visible,
 .js .reveal:focus-within {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 
-/* Cabeçalhos de seção: selo, título (com desfoque) e subtítulo em sequência */
+.js .reveal:focus-within {
+  transition-delay: 0s;
+}
+
 .js .section-header.reveal {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 
 .js .section-header.reveal > * {
   opacity: 0;
-  transform: translate3d(0, 16px, 0);
-  transition:
-    opacity 0.8s var(--ease-reveal),
-    transform 0.8s var(--ease-reveal),
-    filter 0.8s var(--ease-reveal);
-}
-
-.js .section-header.reveal > .section-title {
-  transform: translate3d(0, 30px, 0);
-  filter: blur(8px);
-  transition-duration: 0.9s;
+  transform: translateY(12px);
+  transition: opacity 0.46s var(--ease-reveal), transform 0.46s var(--ease-reveal);
 }
 
 .js .section-header.reveal.is-visible > *,
 .js .section-header.reveal:focus-within > * {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 
 .js .section-header.reveal.is-visible > .section-title {
-  transition-delay: 0.15s;
+  transition-delay: 60ms;
 }
 
-.js .section-header.reveal.is-visible > :nth-child(n + 3) {
-  transition-delay: 0.28s;
-}
-
+/* Abertura com deslocamento curto e entrada escalonada. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-content,
-  .hero-media {
-    animation: hero-arrival 0.75s var(--ease-reveal) 1.2s both;
+  .hero-section {
+    --ease-hero: cubic-bezier(0.3, 0.12, 0.26, 1);
   }
 
-  .hero-media {
-    animation-delay: 1.35s;
+  .hero-step,
+  .hero-line-inner {
+    animation: hero-rise 0.68s var(--ease-hero) both;
+    animation-delay: calc(var(--step, 0) * 40ms);
   }
 
-  .hero-content:focus-within,
-  .hero-media:focus-within {
+  .hero-portrait {
+    animation: hero-portrait 0.86s var(--ease-hero) both;
+  }
+
+  .hero-content:focus-within .hero-step,
+  .hero-content:focus-within .hero-line-inner {
     animation: none;
   }
 }
 
-@keyframes hero-arrival {
+@media (prefers-reduced-motion: no-preference) {
+  .about-visual.is-visible .about-frame::before {
+    animation: about-frame-draw 0.9s ease 0.15s both;
+  }
+
+  .about-visual.is-visible .about-frame::after {
+    animation: about-frame-draw 0.92s ease 0.25s both;
+  }
+
+  .about-visual.is-visible .about-frame-reflection {
+    animation: about-frame-reflection 1.6s ease-in-out 1.15s both;
+  }
+}
+
+@keyframes hero-rise {
   from {
-    opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
 
   to {
-    opacity: 1;
     transform: none;
   }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --reveal-side: 32px;
-    --reveal-card-side: 32px;
-    --reveal-blur: 4px;
+@keyframes hero-portrait {
+  from {
+    opacity: 0.22;
   }
 
-  /* :not(.is-visible) para não vencer a regra de entrada (o título ficaria preso desfocado) */
-  .js .section-header.reveal:not(.is-visible) > .section-title {
-    filter: blur(4px);
-    transform: translate3d(0, 20px, 0);
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes about-frame-draw {
+  from {
+    background-size: 0 var(--about-frame-line), var(--about-frame-line) 0, 0 var(--about-frame-line), var(--about-frame-line) 0;
+  }
+
+  26% {
+    background-size: 100% var(--about-frame-line), var(--about-frame-line) 0, 0 var(--about-frame-line), var(--about-frame-line) 0;
+  }
+
+  50% {
+    background-size: 100% var(--about-frame-line), var(--about-frame-line) 100%, 0 var(--about-frame-line), var(--about-frame-line) 0;
+  }
+
+  76% {
+    background-size: 100% var(--about-frame-line), var(--about-frame-line) 100%, 100% var(--about-frame-line), var(--about-frame-line) 0;
+  }
+
+  to {
+    background-size: var(--about-frame-perimeter);
+  }
+}
+
+@keyframes about-frame-reflection {
+  from {
+    opacity: 0;
+    background-position: left center;
+  }
+
+  48% {
+    opacity: 0.46;
+  }
+
+  to {
+    opacity: 0;
+    background-position: right center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-film-video {
+    display: none;
+  }
+
+  .button {
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .button:hover,
+  .button:active,
+  .button:hover .btn-arrow {
+    transform: none;
+  }
+
+  .button-primary:hover {
+    background-position: 24% center;
+  }
+
   .js .reveal,
   .js .section-header.reveal > * {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     transition: none !important;
   }
 }

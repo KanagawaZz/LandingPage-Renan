@@ -1,4 +1,5 @@
 import siteConfig from '../data/siteConfig.js';
+import Brand from '../components/Brand.js';
 
 // <!-- REVISAR COM O ADVOGADO: a política deve descrever as práticas reais de tratamento de dados -->
 // Gerada no build (vite.config.js). As ferramentas de análise só são citadas quando configuradas.
@@ -53,10 +54,7 @@ export function renderPrivacyPage() {
   return `
     <header class="legal-header">
       <div class="legal-container legal-header-inner">
-        <a href="/" class="legal-brand" aria-label="Voltar para a página inicial">
-          <span class="legal-monogram">RM</span>
-          <span>Renan Moraes · Advocacia Criminal</span>
-        </a>
+        ${Brand({ href: '/' })}
         <a href="/" class="legal-back">← Voltar ao site</a>
       </div>
     </header>
@@ -90,8 +88,9 @@ export function renderPrivacyPage() {
 
       <h3>Dados técnicos</h3>
       <p>
-        A empresa de hospedagem (<strong>Vercel</strong>) registra dados técnicos de acesso, como endereço IP e
-        navegador, para segurança e funcionamento do site.
+        O servidor do site, contratado na <strong>Hostinger</strong>, registra dados técnicos de acesso, como
+        endereço IP e navegador, para segurança e funcionamento do site. Textos, imagens e fontes são servidos
+        pelo próprio servidor.
       </p>
 
       <h2>3. Para que os dados são usados e com qual base legal</h2>
@@ -119,7 +118,7 @@ export function renderPrivacyPage() {
       <ul>
         ${usesGA ? '<li>Google (Google Analytics);</li>' : ''}
         ${usesClarity ? '<li>Microsoft (Microsoft Clarity);</li>' : ''}
-        <li>Vercel (hospedagem do site);</li>
+        <li>Hostinger (servidor onde o site fica hospedado);</li>
         <li>Meta (WhatsApp), quando você inicia uma conversa por esse canal.</li>
       </ul>
       <p>
@@ -167,7 +166,7 @@ export function renderPrivacyPage() {
 
     <footer class="legal-footer">
       <div class="legal-container">
-        <p>© ${year} Renan Moraes Advocacia Criminal · OAB/MT 37.334</p>
+        <p>© ${year} Renan Moraes Advogado · OAB/MT 37.334</p>
       </div>
     </footer>
   `;

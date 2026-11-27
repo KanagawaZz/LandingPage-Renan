@@ -1,4 +1,5 @@
 import Icon from './Icon.js';
+import lawyer from '../data/lawyer.js';
 import { createWhatsAppLink } from '../utils/whatsapp.js';
 
 export default function WhatsAppButton() {
@@ -9,7 +10,7 @@ export default function WhatsAppButton() {
         class="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Abrir conversa no WhatsApp com Renan Moraes"
+        aria-label="Abrir conversa no WhatsApp com o ${lawyer.displayName}"
       >
         <div class="whatsapp-float-icon">
           ${Icon('whatsapp')}
