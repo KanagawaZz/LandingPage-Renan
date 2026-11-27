@@ -1,0 +1,26 @@
+# Deploy no Dokploy (serviço do tipo "Docker Compose").
+#
+# 1. Aba Environment: SITE_URL=https://renan.advogado.xn--vrion-sra.tech
+# 2. Aba Domains: renan.advogado.xn--vrion-sra.tech → serviço "web", porta 8080,
+#    HTTPS ligado (Let's Encrypt). O Dokploy adiciona sozinho as labels do Traefik e a
+#    rede dokploy-network. O domínio værion.tech tem "æ": no Dokploy, use sempre a forma
+#    punycode (xn--vrion-sra), que é a que o navegador envia e o certificado aceita.
+#
+# Sem "ports" (a porta não fica aberta no servidor; o acesso passa pelo Traefik) e sem
+# "container_name" (atrapalha logs e métricas do Dokploy). Passo a passo no README.md.
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:?Defina SITE_URL na aba Environment do Dokploy}
+    restart: unless-stopped
+    expose:
+      - "8080"
+    # Logs limitados, para não encher o disco da VPS com o tempo
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

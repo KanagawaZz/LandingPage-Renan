@@ -1,0 +1,20 @@
+# Só o necessário para o build entra na imagem: código, public/, scripts/vite e a
+# configuração do nginx. Originais de mídia, documentação e dependências locais ficam de fora.
+.git
+.gitignore
+.dockerignore
+node_modules
+dist
+brand
+docs
+scripts/media
+__pycache__
+*.md
+.claude
+.vscode
+.taste-skill
+.DS_Store
+.env
+.env.*
+docker-compose.yml
+Dockerfile
