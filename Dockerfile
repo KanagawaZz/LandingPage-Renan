@@ -24,6 +24,9 @@ RUN npm run build \
   && find dist -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.xml' -o -name '*.txt' -o -name '*.json' \) \
      -exec sh -c 'gzip -9 -c "$1" > "$1.gz"' _ {} \;
 
+# Redirecionamento 301 de outros nomes (www, domínio antigo) para o endereço oficial
+RUN node deploy/canonical-host.mjs > canonical-host.conf
+
 # ---------------------------------------------------------------------------
 # Etapa 2: servidor final, só com o nginx e os arquivos prontos (sem Node)
 # ---------------------------------------------------------------------------
@@ -31,6 +34,7 @@ FROM nginxinc/nginx-unprivileged:1.30-alpine
 
 COPY deploy/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY deploy/nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
+COPY --from=build /app/canonical-host.conf /etc/nginx/snippets/canonical-host.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 8080

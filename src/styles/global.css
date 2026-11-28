@@ -619,13 +619,24 @@ ol {
   max-width: min(600px, 52%);
 }
 
+/* H1 da abertura: agrupa a linha do nome e o título, mantendo a mesma disposição de
+   quando eram elementos separados (coluna, alinhados à esquerda) */
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Dentro do H1: repõe a fonte e a altura de linha do texto comum, que o H1 trocaria */
 .hero-eyebrow {
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem 0.75rem;
   margin-bottom: 1.75rem;
   color: var(--color-label);
+  font-family: var(--font-sans);
   font-size: 0.75rem;
+  line-height: 1.65;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;

@@ -20,11 +20,11 @@
 
 ## Pré-renderização e SEO
 
-O Vite preenche os marcadores das duas entradas HTML com o conteúdo gerado em `src/render.js`. Os scripts do navegador cuidam das interações sobre esse HTML. A URL do site é a referência para as tags canônicas, os metadados de compartilhamento, `robots.txt` e `sitemap.xml`. Em produção ela vem da variável `SITE_URL`, definida no Dokploy. No build local, vale o endereço padrão em `src/data/siteConfig.js`. O plugin disponibiliza `robots.txt` e `sitemap.xml` no servidor de desenvolvimento e os gera em `dist/` no build.
+O Vite preenche os marcadores das duas entradas HTML com o conteúdo gerado em `src/render.js`. Os scripts do navegador cuidam das interações sobre esse HTML. A URL do site é a referência para as tags canônicas, os metadados de compartilhamento, os dados estruturados (`src/utils/seo.js`), `robots.txt` e `sitemap.xml`. Em produção ela vem da variável `SITE_URL`, definida no Dokploy. No build local, vale o endereço padrão em `src/data/siteConfig.js`. O plugin disponibiliza `robots.txt` e `sitemap.xml` no servidor de desenvolvimento e os gera em `dist/` no build.
 
 ## Produção
 
-A imagem do `Dockerfile` roda o build com Node e copia `dist/` para um nginx sem root, que atende na porta 8080. O nginx entrega versões `.gz` geradas no build e guarda em cache por um ano o que tem hash no nome (`/assets/`). Imagens e vídeo ficam em cache por 30 dias, e as páginas são sempre revalidadas. Os cabeçalhos de segurança, incluindo a política de conteúdo (CSP), estão em `deploy/nginx/security-headers.conf`. Se uma nova ferramenta externa for adicionada ao site, o domínio dela precisa entrar na CSP. O passo a passo do deploy está no `README.md`.
+A imagem do `Dockerfile` roda o build com Node e copia `dist/` para um nginx sem root, que atende na porta 8080. O nginx entrega versões `.gz` geradas no build e guarda em cache por um ano o que tem hash no nome (`/assets/`). Imagens e vídeo ficam em cache por 30 dias, e as páginas são sempre revalidadas. Os cabeçalhos de segurança, incluindo a política de conteúdo (CSP), estão em `deploy/nginx/security-headers.conf`. Se uma nova ferramenta externa for adicionada ao site, o domínio dela precisa entrar na CSP. No build da imagem, `deploy/canonical-host.mjs` gera o redirecionamento 301 de qualquer outro nome de domínio para o `SITE_URL`. O passo a passo do deploy está no `README.md`, e as decisões de SEO estão em `SEO.md`.
 
 ## Organização das mídias
 

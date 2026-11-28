@@ -68,13 +68,18 @@ export default function Hero() {
 
       <div class="container hero-container">
         <div class="hero-content">
-          <p class="hero-eyebrow hero-step" style="--step: 0">
-            <span>${lawyer.displayName}</span><span class="hero-eyebrow-sep" aria-hidden="true">·</span><span>Advogado criminalista</span>
-          </p>
-
-          <h1 id="hero-title" class="hero-title">
-            <span class="hero-line"><span class="hero-line-inner" style="--step: 1">Sua defesa começa</span></span>
-            <span class="hero-line"><span class="hero-line-inner text-accent" style="--step: 2">antes mesmo do&nbsp;processo.</span></span>
+          <!-- O H1 reúne a linha "Dr. Renan Moraes · Advogado criminalista" e o título:
+               quem é, a especialidade e a proposta, sem mudar nenhum texto visível. -->
+          <h1 id="hero-title" class="hero-heading">
+            <span class="hero-eyebrow hero-step" style="--step: 0">
+              <span>${lawyer.displayName}</span>
+              <span class="hero-eyebrow-sep" aria-hidden="true">·</span>
+              <span>Advogado criminalista</span>
+            </span>
+            <span class="hero-title">
+              <span class="hero-line"><span class="hero-line-inner" style="--step: 1">Sua defesa começa</span></span>
+              <span class="hero-line"><span class="hero-line-inner text-accent" style="--step: 2">antes mesmo do&nbsp;processo.</span></span>
+            </span>
           </h1>
 
           <p class="hero-description hero-step" style="--step: 4">

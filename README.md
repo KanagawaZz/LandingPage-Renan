@@ -30,7 +30,7 @@ Endereço atual: **renan.advogado.værion.tech**. Como `værion` tem "æ", DNS, 
 4. **Domains:** adicione o host `renan.advogado.xn--vrion-sra.tech` (em punycode, nunca com "æ") com o serviço `web`, a porta `8080`, o caminho `/`, HTTPS ligado e certificado Let's Encrypt.
 5. **Deploy.** Com o Autodeploy ligado, cada push na `main` publica o site de novo.
 
-Ao trocar de domínio no futuro (ex.: um `.adv.br` próprio), basta mudar o `SITE_URL`, o host na aba Domains e o DNS. Se o novo domínio tiver um `www`, cadastre-o também em Domains: o nginx redireciona o `www` para o domínio principal.
+O nginx responde com 301 para o endereço do `SITE_URL` quando o acesso chega por qualquer outro nome (`www`, domínio antigo). Para trocar de domínio no futuro (ex.: um `.adv.br` próprio), adicione o novo em Domains **sem remover o antigo** e só depois troque o `SITE_URL`. O passo a passo completo está em [SEO.md](SEO.md#9-migração-para-um-domínio-próprio-advbr).
 
 Depois do deploy, confira:
 

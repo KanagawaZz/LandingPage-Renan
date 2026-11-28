@@ -28,9 +28,11 @@ const siteConfig = {
     lastUpdated: '26 de novembro de 2026',
   },
   seo: {
-    title: 'Dr. Renan Moraes | Advogado Criminalista · OAB/MT 37.334 · Cuiabá e Várzea Grande',
+    // Título até ~60 caracteres e descrição até ~160: acima disso o Google corta no resultado.
+    // Termos principais no começo; sem promessa de resultado (Provimento 205/2021 da OAB).
+    title: 'Dr. Renan Moraes | Advogado Criminalista em Cuiabá – MT',
     description:
-      'Advogado criminalista OAB/MT 37.334 em Cuiabá e Várzea Grande. Defesa criminal em delegacias, investigações, audiências, recursos e execução penal. Atendimento online em todo o Brasil.',
+      'Advogado criminalista com atuação em Cuiabá e Várzea Grande. Defesa criminal, acompanhamento em delegacias, processos penais e execução penal. OAB/MT 37.334.',
     // Endereço público do site: canonical, og:image, JSON-LD, robots.txt e sitemap.xml saem
     // dele no build. Em produção vem da variável SITE_URL (aba Environment do Dokploy);
     // o valor abaixo vale para o build local. Este arquivo também vai para o navegador,
