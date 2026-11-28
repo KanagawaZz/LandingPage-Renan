@@ -159,12 +159,18 @@ As diferenças de desempenho entre antes e depois estão dentro da variação no
 Dependem de acesso a contas e não podem ser feitas pelo código:
 
 1. **Deploy** desta versão no Dokploy (push na `main` com Autodeploy, ou Deploy manual).
-2. **Google Search Console:** criar a propriedade, verificar pelo DNS e enviar o sitemap (seção 8).
+2. **Google Search Console:** propriedade criada e verificada por arquivo HTML. Falta enviar o sitemap e solicitar a indexação (seção 8).
 3. **Bing Webmaster Tools** (opcional): importar a propriedade do Search Console em <https://www.bing.com/webmasters>.
 4. **Perfil da Empresa no Google:** só depois de confirmar a elegibilidade com o cliente (seção 5).
 5. **Domínio próprio `.adv.br`:** decisão do cliente (seção 9).
 
 ## 8. Google Search Console
+
+### Verificação em uso
+
+A propriedade foi criada como **Prefixo do URL** (`https://renan.advogado.værion.tech/`) e verificada por **arquivo HTML**: `public/google942b024c1ca438a7.html`, publicado em `https://renan.advogado.xn--vrion-sra.tech/google942b024c1ca438a7.html`. **Não remova nem altere esse arquivo:** o Google confere periodicamente, e a propriedade perde a verificação se ele sumir. Na migração para `.adv.br`, a nova propriedade terá outro arquivo ou outro registro.
+
+A verificação pelo DNS (abaixo) é a alternativa, para uma propriedade do tipo **Domínio**.
 
 ### Cadastrar e verificar (registro DNS TXT)
 
