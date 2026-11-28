@@ -72,7 +72,7 @@ function structuredData() {
     },
     telephone,
     email: lawyer.email,
-    sameAs: [lawyer.instagramUrl],
+    sameAs: [lawyer.instagramUrl, lawyer.googleBusinessProfileUrl],
     knowsAbout,
     alumniOf: {
       '@type': 'CollegeOrUniversity',

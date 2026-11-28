@@ -20,6 +20,9 @@ const lawyer = {
   whatsappDisplay: '(65) 99936-5185',
   instagram: '@renaanmoraes',
   instagramUrl: 'https://www.instagram.com/renaanmoraes',
+  // Perfil da Empresa no Google (endereço permanente pelo CID). Vai no sameAs dos dados
+  // estruturados para o Google ligar o site e o perfil como o mesmo profissional.
+  googleBusinessProfileUrl: 'https://www.google.com/maps?cid=13907588790021713486',
   email: 'renanmoraes.advogado@gmail.com',
   // Retrato aprovado em brand/originais. Versões web geradas em public/images.
   portrait: {

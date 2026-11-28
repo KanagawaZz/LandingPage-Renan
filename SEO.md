@@ -121,7 +121,8 @@ Os termos foram aplicados onde já são verdadeiros para o conteúdo, sem mudar 
 ## 5. SEO local sem estabelecimento físico
 
 - **Sem endereço.** A região de atuação está nos metadados, no JSON-LD (`areaServed` com Cuiabá, Várzea Grande, Mato Grosso e Brasil) e no texto visível que já existia.
-- **Perfil da Empresa no Google: não criado.** A elegibilidade depende da modalidade de atendimento e precisa ser confirmada com o cliente. O Google exige contato presencial com clientes. Um negócio sem loja pode se cadastrar como "empresa de área de cobertura", com o endereço oculto, desde que atenda presencialmente na região (o site menciona atendimento presencial e visitas a unidades prisionais, conforme o caso). Atendimento só online não é elegível. A verificação é feita pelo Google e exige um endereço real, que não aparece no perfil. Se for elegível, o perfil deve ter as áreas Cuiabá e Várzea Grande, a categoria de advogado criminalista e o link deste site.
+- **Perfil da Empresa no Google: criado em 28/11/2026** como "Renan Moraes Advogado", categoria "Advogado criminal", área de atendimento em Cuiabá e Várzea Grande, sem endereço, com site, telefone, descrição e Instagram. Endereço permanente: <https://www.google.com/maps?cid=13907588790021713486>, ligado ao site pelo `sameAs` da pessoa nos dados estruturados (`googleBusinessProfileUrl` em `src/data/lawyer.js`). Pendências: preencher o horário de funcionamento. Avaliações só de clientes reais e espontâneas: o Google remove as de quem trabalha para o negócio, inclusive quem faz o site ou o perfil.
+- **Critérios de elegibilidade, para referência.** A elegibilidade depende da modalidade de atendimento. O Google exige contato presencial com clientes. Um negócio sem loja pode se cadastrar como "empresa de área de cobertura", com o endereço oculto, desde que atenda presencialmente na região (o site menciona atendimento presencial e visitas a unidades prisionais, conforme o caso). Atendimento só online não é elegível. A verificação é feita pelo Google e exige um endereço real, que não aparece no perfil. Se for elegível, o perfil deve ter as áreas Cuiabá e Várzea Grande, a categoria de advogado criminalista e o link deste site.
 - **Consistência de citações.** Use sempre o mesmo nome ("Dr. Renan Moraes, Advogado Criminalista"), o mesmo telefone e o link do site no Instagram, no WhatsApp Business e em perfis profissionais.
 
 ## 6. Validações realizadas
@@ -159,9 +160,9 @@ As diferenças de desempenho entre antes e depois estão dentro da variação no
 Dependem de acesso a contas e não podem ser feitas pelo código:
 
 1. **Deploy** desta versão no Dokploy (push na `main` com Autodeploy, ou Deploy manual).
-2. **Google Search Console:** propriedade criada e verificada por arquivo HTML. Falta enviar o sitemap e solicitar a indexação (seção 8).
+2. **Google Search Console:** concluído em 28/11/2026. Propriedade verificada por arquivo HTML, sitemap processado (2 páginas) e indexação solicitada (seção 8). Acompanhe se a página entra no índice.
 3. **Bing Webmaster Tools** (opcional): importar a propriedade do Search Console em <https://www.bing.com/webmasters>.
-4. **Perfil da Empresa no Google:** só depois de confirmar a elegibilidade com o cliente (seção 5).
+4. **Perfil da Empresa no Google:** criado (seção 5). Falta o horário de funcionamento.
 5. **Domínio próprio `.adv.br`:** decisão do cliente (seção 9).
 
 ## 8. Google Search Console
