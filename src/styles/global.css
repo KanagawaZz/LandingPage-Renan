@@ -1774,6 +1774,33 @@ ol {
   transform: translateY(-2px);
 }
 
+/* Link discreto para a tela de avaliação do Perfil da Empresa no Google.
+   Texto pequeno em tom secundário; a estrela de traço indica o assunto sem chamar atenção. */
+.footer-review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.footer-review-link:hover {
+  color: var(--color-accent-light);
+  text-decoration-color: currentColor;
+}
+
+.footer-review-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--color-accent);
+}
+
 .footer-heading {
   margin-bottom: 1.25rem;
   color: var(--color-label);

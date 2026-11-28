@@ -49,6 +49,19 @@ export default function Footer() {
                 ${Icon('mail')}
               </a>
             </div>
+            <!-- Discreto e para quem já foi atendido: sem incentivo nem pedido de nota
+                 (regras do Google e publicidade da OAB) -->
+            <a
+              href="${lawyer.googleReviewUrl}"
+              class="footer-review-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Já foi atendido? Avalie no Google (abre em nova aba)"
+            >
+              ${Icon('star', 'footer-review-icon')}
+              <span>Já foi atendido? Avalie no Google</span>
+              ${Icon('arrow-up-right', 'link-icon-sm')}
+            </a>
           </div>
 
           <div class="footer-nav-col desktop-only">

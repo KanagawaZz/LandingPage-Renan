@@ -23,6 +23,9 @@ const lawyer = {
   // Perfil da Empresa no Google (endereço permanente pelo CID). Vai no sameAs dos dados
   // estruturados para o Google ligar o site e o perfil como o mesmo profissional.
   googleBusinessProfileUrl: 'https://www.google.com/maps?cid=13907588790021713486',
+  // Abre direto a tela "escrever avaliação" do mesmo perfil (Place ID derivado do perfil
+  // e conferido no Maps). Usado no link discreto do rodapé.
+  googleReviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJ6bccZvbwN4cRTu5yp1GuAcE',
   email: 'renanmoraes.advogado@gmail.com',
   // Retrato aprovado em brand/originais. Versões web geradas em public/images.
   portrait: {
